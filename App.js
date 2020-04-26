@@ -1,19 +1,40 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { loadAsync } from "expo-font";
+import { Spinner } from "native-base";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+// Navigation
+import RootNavigator from "./Navigation";
+import { NavigationContainer } from "@react-navigation/native";
+
+// Redux
+import { Provider } from "react-redux";
+// import store from "./redux";
+
+class App extends Component {
+  state = {
+    loading: true,
+  };
+
+  async componentDidMount() {
+    await loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+    });
+    this.setState({ loading: false });
+  }
+
+  render() {
+    if (this.state.loading) {
+      return <Spinner color="white" />;
+    }
+    return (
+      // <Provider store={store}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      // </Provider>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
