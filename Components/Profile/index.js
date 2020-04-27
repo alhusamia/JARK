@@ -10,14 +10,15 @@ import { render } from "react-dom";
 
 class Profile extends Component {
   render() {
-    const { user } = this.props;
+    const { profile } = this.props;
+    console.log(profile, "Profile");
 
     return (
       <View>
         <Text
           style={{
             color: "black",
-            fontSize: 30,           
+            fontSize: 30,
             fontWeight: "bold",
             opacity: 1,
             textAlign: "center",
@@ -27,8 +28,7 @@ class Profile extends Component {
             textShadowRadius: 8,
           }}
         >
-          {" "}
-          Before you go.... Promise to come back again ....
+          TTTTTTTTTHJJJJLK
         </Text>
 
         <LogoutButton />
@@ -37,10 +37,7 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = ({ user, orders, profile }) => ({
-  username: user?.username,
-  user,
-  orders,
+const mapStateToProps = ({ profile }) => ({
   profile,
 });
 

@@ -13,7 +13,7 @@ const { Navigator, Screen } = createStackNavigator();
 function UserStack({ user }) {
   return (
     <Navigator
-      initialRouteName={LOGIN}
+      initialRouteName={PROFILE}
       screenOptions={{
         headerStyle: {
           backgroundColor: "black",
@@ -38,13 +38,19 @@ function UserStack({ user }) {
           />
         </>
       ) : (
-        <>{/* <Screen name={PROFILE} component={Profile} /> */}</>
+        <>
+          <Screen
+            name={PROFILE}
+            component={Profile}
+            options={{ headerShown: false }}
+          />
+        </>
       )}
     </Navigator>
   );
 }
-// const mapStateToProps = ({ user }) => ({
-//   user,
-// });
-// export default connect(mapStateToProps)(UserStack);
-export default UserStack;
+const mapStateToProps = ({ user }) => ({
+  user,
+});
+export default connect(mapStateToProps)(UserStack);
+// export default UserStack;

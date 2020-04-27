@@ -4,3 +4,6 @@ export const SET_ERRORS = "SET_ERRORS";
 
 //Products
 export const SET_All_PRODUCTS = "SET_All_PRODUCTS";
+
+//Profile
+export const SET_PROFILE = "SET_PROFILE";
