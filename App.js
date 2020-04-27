@@ -8,7 +8,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 // Redux
 import { Provider } from "react-redux";
-// import store from "./redux";
+import store from "./redux";
 
 class App extends Component {
   state = {
@@ -28,11 +28,11 @@ class App extends Component {
       return <Spinner color="white" />;
     }
     return (
-      // <Provider store={store}>
+      <Provider store={store}>
         <NavigationContainer>
           <RootNavigator />
         </NavigationContainer>
-      // </Provider>
+      </Provider>
     );
   }
 }
