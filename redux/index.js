@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-// import {  checkForToken } from "./actions";
+import { checkForToken } from "./actions";
 
 import rootReducer from "./reducers";
 
@@ -12,6 +12,6 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk))
 );
 
-// store.dispatch(checkForToken());
+store.dispatch(checkForToken());
 
 export default store;

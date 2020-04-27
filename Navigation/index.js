@@ -2,27 +2,17 @@ import React from "react";
 import { Icon, Image } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from "../Components/Home";
 // Screens
-import { MAIN } from "./screenNames";
+import { MAIN, USER } from "./screenNames";
+import UserStack from "./StackNavigators/UserStack";
+import Home from "../Components/Home";
 
 const { Navigator, Screen } = createStackNavigator();
 
 function RootTabNavigator() {
   return (
-    <Navigator initialRouteName={MAIN}>
-      {/* <Screen
-        name={USER}
-        component={UserStack}
-        options={() => {
-          return {
-            title: "Profile",
-            headerRight: () => (
-              <Image source={logo} style={{ height: 30, width: 15, flex: 1 }} />
-            ),
-          };
-        }}
-      /> */}
+    <Navigator initialRouteName={USER}>
+      <Screen name={USER} component={UserStack} />
       <Screen name={MAIN} component={Home} />
     </Navigator>
   );
