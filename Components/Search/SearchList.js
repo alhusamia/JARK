@@ -12,7 +12,7 @@ class SearchList extends Component {
     value: "",
   };
   componentDidMount() {
-    this.props.getAllProducts();
+    this.props.getAllProducts(); // not necessary here if it's dispatched in redux/index.js
   }
   renderSeparator = () => {
     return (
@@ -34,9 +34,16 @@ class SearchList extends Component {
     const newData = this.props.allproducts.filter((item) => {
       const itemData = `${item.name.toUpperCase()} `;
       const textData = text.toUpperCase();
-     
+
       return itemData.includes(textData);
     });
+    /**
+     * The above 5 lines can be simplified to the three below...
+     */
+    // const newData = this.props.allproducts.filter((item) =>
+    //   item.name.toUpperCase().includes(text.toUpperCase())
+    // );
+
     this.setState({
       data: newData,
     });

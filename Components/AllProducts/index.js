@@ -8,11 +8,16 @@ import Product from "../Product/Product";
 
 class AllProduct extends Component {
   componentDidMount() {
+    /**
+     * This call to Redux Action should be moved to
+     * redux/index.js after checking for token (or before)
+     */
     this.props.getAllProducts();
   }
   render() {
     const { navigation, allproducts } = this.props;
 
+    // maybe call the const products or productList
     const product = allproducts.map((product) => (
       <Product
         key={product.name + product.id}

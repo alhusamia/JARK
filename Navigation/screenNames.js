@@ -14,4 +14,4 @@ export const SEARCHLIST = "SearchList";
 
 //Rent
 export const RENTLIST = "RENTLIST";
-export const PRODUCT = "PRODUCT";
+export const PRODUCT = "PRODUCT"; // PRODUCT_DETAIL ?
