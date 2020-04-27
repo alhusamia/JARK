@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // Screen Names
-import { SIGNUP, SHOP, CATEGORIES } from "../../Navigation/screenNames";
+import { SIGNUP, SEARCH, SEARCHLIST, MAIN } from "../../Navigation/screenNames";
 
 // Styling Components
 import { TextInput, TouchableOpacity, View } from "react-native";
@@ -21,8 +21,7 @@ class Login extends Component {
     const { username, password } = this.state;
     const { errors } = this.props;
 
-    // const goToCategoryList = () =>
-    //   navigation.navigate(SHOP, { screen: CATEGORIES });
+    const goToCategoryList = () => navigation.navigate(MAIN);
     return (
       <View style={styles.authContainer}>
         <Text style={styles.authTitle}>Login</Text>
@@ -50,7 +49,7 @@ class Login extends Component {
         />
         <TouchableOpacity
           style={styles.authButton}
-          onPress={() => login(this.state)}
+          onPress={() => login(this.state, goToCategoryList)}
         >
           <Text style={styles.authButtonText}>Log in</Text>
         </TouchableOpacity>

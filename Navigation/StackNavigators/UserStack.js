@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 import { LOGIN, SIGNUP, PROFILE } from "../screenNames";
 import Login from "../../Components/Authentication/Login";
 import Signup from "../../Components/Authentication/Signup";
-// import Profile from "../../Components/Profile";
+import Profile from "../../Components/Profile";
 
 const { Navigator, Screen } = createStackNavigator();
 
-function UserStack() {
+function UserStack({ user }) {
   return (
     <Navigator
       initialRouteName={LOGIN}
@@ -24,22 +24,22 @@ function UserStack() {
         headerTintColor: "white",
       }}
     >
-      {/* {!user ? ( */}
-      <>
-        <Screen
-          name={LOGIN}
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Screen
-          name={SIGNUP}
-          component={Signup}
-          options={{ headerShown: false }}
-        />
-      </>
-      {/* ) : ( */}
-      <>{/* <Screen name={PROFILE} component={Profile} /> */}</>
-      {/* )} */}
+      {!user ? (
+        <>
+          <Screen
+            name={LOGIN}
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Screen
+            name={SIGNUP}
+            component={Signup}
+            options={{ headerShown: false }}
+          />
+        </>
+      ) : (
+        <>{/* <Screen name={PROFILE} component={Profile} /> */}</>
+      )}
     </Navigator>
   );
 }

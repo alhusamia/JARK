@@ -11,3 +11,7 @@ export const PROFILE = "Profile";
 //Search
 export const SEARCH = "Search";
 export const SEARCHLIST = "SearchList";
+
+//Rent
+export const RENTLIST = "RENTLIST";
+export const PRODUCT = "PRODUCT";

@@ -32,13 +32,13 @@ export const checkForToken = () => async (dispatch) => {
   else dispatch(setCurrentUser());
 };
 
-export const login = (userData) => async (dispatch) => {
+export const login = (userData, redirect) => async (dispatch) => {
   try {
     const res = await instance.post("login/", userData);
     const { access } = res.data;
 
     dispatch(setCurrentUser(access));
-    // redirect();
+    redirect();
   } catch (error) {
     dispatch(setErrors(error.response.data));
   }
@@ -49,8 +49,8 @@ export const signup = (userData) => async (dispatch) => {
     const res = await instance.post("signup/", userData);
     const { access } = res.data;
 
-    // dispatch(login(userData));
-    dispatch(setCurrentUser(access));
+    dispatch(login(userData));
+    // dispatch(setCurrentUser(access));
   } catch (error) {
     dispatch(setErrors(error.response.data));
   }
