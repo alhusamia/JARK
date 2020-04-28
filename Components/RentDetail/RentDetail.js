@@ -15,9 +15,10 @@ class RentDetail extends React.Component {
     product_id: "",
     product_name: "",
     product_owner: "",
- 
   };
   componentDidMount() {
+    // you can just set these values directly in the state declaration above.
+    // no need for componentDidMount()
     this.setState({
       product_id: this.props.route.params.product.id,
       product_name: this.props.route.params.product.name,

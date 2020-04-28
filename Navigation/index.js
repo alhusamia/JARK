@@ -27,11 +27,9 @@ function RootTabNavigator() {
       <Screen
         name={MAIN}
         component={Home}
-        options={({ navigation }) => {
-          return {
-            headerRight: () => <SearchButton navigation={navigation} />,
-          };
-        }}
+        options={({ navigation }) => ({
+          headerRight: () => <SearchButton navigation={navigation} />,
+        })}
       />
       <Screen name={SEARCHLIST} component={SearchList} />
       <Screen

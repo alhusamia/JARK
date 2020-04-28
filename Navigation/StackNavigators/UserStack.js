@@ -24,7 +24,7 @@ const { Navigator, Screen } = createStackNavigator();
 function UserStack({ user }) {
   return (
     <Navigator
-      initialRouteName={PROFILE}
+      initialRouteName={PROFILE} {/* should probably have a condition here to either set PROFILE or LOGIN */}
       screenOptions={{
         headerStyle: {
           backgroundColor: "black",
