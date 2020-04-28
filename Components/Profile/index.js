@@ -15,7 +15,7 @@ import LogoutButton from "./LogoutButton";
 
 import styles from "./styles";
 import { render } from "react-dom";
-import { LISTOFRENT } from "../../Navigation/screenNames";
+import { LISTOFRENT, RENT } from "../../Navigation/screenNames";
 
 class Profile extends Component {
   render() {
@@ -41,6 +41,9 @@ class Profile extends Component {
         </Text>
         <Button full warning onPress={() => navigation.navigate(LISTOFRENT)}>
           <Text>List of Rent</Text>
+        </Button>
+        <Button full warning onPress={() => navigation.navigate(RENT)}>
+          <Text>RENTERQR</Text>
         </Button>
         <LogoutButton />
       </View>

@@ -9,19 +9,18 @@ import {
   Content,
   List,
 } from "native-base";
-import { connect } from "react-redux";
 
 // Screens
-import { PRODUCT } from "../../Navigation/screenNames";
+import { RENTDETAIL } from "../../Navigation/screenNames";
 
 // Style
 import styles from "./styles";
-import Product from "../Product/Product";
-class ListOfRent extends Component {
+import { connect } from "react-redux";
+
+class Rents extends Component {
   render() {
-    const { listofrents, navigation } = this.props;
-    // console.log(listofrents);
-    const products = listofrents.map((product) => (
+    const { navigation, listofrents } = this.props;
+    const rents = listofrents.map((product) => (
       <ImageBackground
         source={{ uri: product.image }}
         style={styles.background}
@@ -31,7 +30,7 @@ class ListOfRent extends Component {
         <ListItem
           button
           style={styles.listitem}
-          onPress={() => navigation.navigate(PRODUCT, { product })}
+          onPress={() => navigation.navigate(RENTDETAIL, { product })}
         >
           <Body>
             <Text style={styles.text}>{product.name}</Text>
@@ -42,9 +41,10 @@ class ListOfRent extends Component {
         </ListItem>
       </ImageBackground>
     ));
+
     return (
       <Content>
-        <List>{products}</List>
+        <List>{rents}</List>
       </Content>
     );
   }
@@ -52,4 +52,4 @@ class ListOfRent extends Component {
 const mapStateToProps = ({ listofrents }) => ({
   listofrents,
 });
-export default connect(mapStateToProps)(ListOfRent);
+export default connect(mapStateToProps)(Rents);

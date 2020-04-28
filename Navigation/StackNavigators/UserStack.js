@@ -3,11 +3,21 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { connect } from "react-redux";
 
 // Screens
-import { LOGIN, SIGNUP, PROFILE, LISTOFRENT } from "../screenNames";
+import {
+  LOGIN,
+  SIGNUP,
+  PROFILE,
+  LISTOFRENT,
+  RENT,
+  RENTDETAIL,
+} from "../screenNames";
 import Login from "../../Components/Authentication/Login";
 import Signup from "../../Components/Authentication/Signup";
 import Profile from "../../Components/Profile";
 import ListOfRent from "../../Components/Profile/ListOfRent";
+
+import RentDetail from "../../Components/RentDetail/RentDetail";
+import Rents from "../../Components/Rent/Rents";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -48,6 +58,16 @@ function UserStack({ user }) {
           <Screen
             name={LISTOFRENT}
             component={ListOfRent}
+            options={{ headerShown: false }}
+          />
+          <Screen
+            name={RENT}
+            component={Rents}
+            options={{ headerShown: false }}
+          />
+          <Screen
+            name={RENTDETAIL}
+            component={RentDetail}
             options={{ headerShown: false }}
           />
         </>
