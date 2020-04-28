@@ -12,9 +12,12 @@ import { connect } from "react-redux";
 
 import styles from "./styles";
 
+import { addProductToRentList } from "../../redux/actions";
+
 class ProductDetail extends React.Component {
   render() {
     const { product } = this.props.route.params;
+    const { addProductToRentList } = this.props;
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
@@ -33,24 +36,23 @@ class ProductDetail extends React.Component {
             <Text style={styles.infoDescription}>{product.description}</Text>
           </View>
           <Text style={styles.infoDescription}>{product.owner}</Text>
-          {/* <Right>
+          <Right>
             <Button
               dark
               style={styles.ItemContainer}
-              onPress={() =>
-                this.props.addItemToCart({
-                  name: product.name,
-                })
-              }
+              onPress={() => addProductToRentList(product)}
             >
-              <Text style={{ color: "white" }}>Add</Text>
+              <Text style={{ color: "white" }}>Rent</Text>
             </Button>
-          </Right> */}
+          </Right>
         </View>
       </ScrollView>
     );
   }
 }
-// const mapDispatchToProps = { addItemToCart };
-// export default connect(null, mapDispatchToProps)(ProductDetail);
-export default ProductDetail;
+// const mapDispatchToProps = { addProductToRentList };
+const mapDispatchToProps = (dispatch) => ({
+  addProductToRentList: (product) => dispatch(addProductToRentList(product)),
+});
+export default connect(null, mapDispatchToProps)(ProductDetail);
+// export default ProductDetail;

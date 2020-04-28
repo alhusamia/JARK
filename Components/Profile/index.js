@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Text, View, List, CardItem, Card, ListItem } from "native-base";
+import {
+  Text,
+  View,
+  List,
+  CardItem,
+  Card,
+  ListItem,
+  Button,
+} from "native-base";
 import { connect } from "react-redux";
 
 // Components
@@ -7,10 +15,11 @@ import LogoutButton from "./LogoutButton";
 
 import styles from "./styles";
 import { render } from "react-dom";
+import { LISTOFRENT } from "../../Navigation/screenNames";
 
 class Profile extends Component {
   render() {
-    const { profile } = this.props;
+    const { profile, navigation } = this.props;
     console.log(profile, "Profile");
 
     return (
@@ -30,7 +39,9 @@ class Profile extends Component {
         >
           TTTTTTTTTHJJJJLK
         </Text>
-
+        <Button full warning onPress={() => navigation.navigate(LISTOFRENT)}>
+          <Text>List of Rent</Text>
+        </Button>
         <LogoutButton />
       </View>
     );
