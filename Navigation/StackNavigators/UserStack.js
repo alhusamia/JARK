@@ -18,6 +18,7 @@ import ListOfRent from "../../Components/Profile/ListOfRent";
 
 import RentDetail from "../../Components/RentDetail/RentDetail";
 import Rents from "../../Components/Rent/Rents";
+import Camera from "../../Components/Camera";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -57,7 +58,7 @@ function UserStack({ user }) {
           />
           <Screen
             name={LISTOFRENT}
-            component={ListOfRent}
+            component={Camera}
             options={{ headerShown: false }}
           />
           <Screen
