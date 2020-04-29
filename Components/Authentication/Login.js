@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 
 // Screen Names
-import { SIGNUP, SEARCH, SEARCHLIST, MAIN } from "../../Navigation/screenNames";
+import {
+  SIGNUP,
+  SEARCH,
+  SEARCHLIST,
+  MAIN,
+  USER,
+} from "../../Navigation/screenNames";
 
 // Styling Components
 import { TextInput, TouchableOpacity, View } from "react-native";
@@ -55,7 +61,7 @@ class Login extends Component {
         </TouchableOpacity>
         <Text
           style={styles.authOther}
-          onPress={() => navigation.replace(SIGNUP)}
+          onPress={() => navigation.replace(USER, { screen: SIGNUP })}
         >
           Click here to register!
         </Text>

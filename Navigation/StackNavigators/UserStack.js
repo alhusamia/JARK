@@ -11,11 +11,11 @@ import {
   RENT,
   RENTDETAIL,
   MENU,
+  CREATEPRODUCT,
 } from "../screenNames";
 import Login from "../../Components/Authentication/Login";
 import Signup from "../../Components/Authentication/Signup";
 import Profile from "../../Components/Profile";
-import ListOfRent from "../../Components/Profile/ListOfRent";
 
 import RentDetail from "../../Components/RentDetail/RentDetail";
 import Rents from "../../Components/Rent/Rents";
@@ -25,7 +25,7 @@ import DrawerStack from "./DrawerStack";
 const { Navigator, Screen } = createDrawerNavigator();
 
 import Camera from "../../Components/Camera";
-
+import CreateProduct from "../../Components/CreateProduct";
 
 // const { Navigator, Screen } = createStackNavigator();
 
@@ -78,7 +78,6 @@ function UserStack({ user }) {
             component={RentDetail}
             options={{ headerShown: false }}
           />
-          <Screen name={MENU} component={DrawerStack} />
         </>
       )}
     </Navigator>

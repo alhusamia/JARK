@@ -1,17 +1,11 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  List,
-  CardItem,
-  Card,
-  ListItem,
-  Button,
-} from "native-base";
+import { Text, View, Button } from "native-base";
+import { Modal } from "react-native";
 import { connect } from "react-redux";
 import { getProfile } from "../../redux/actions";
 // Components
 import LogoutButton from "./LogoutButton";
+import CreateProduct from "../CreateProduct";
 
 import styles from "./styles";
 import { render } from "react-dom";
@@ -63,11 +57,7 @@ class Profile extends Component {
             >
               Email: {profile.user.email}
             </Text>
-            <Button
-              full
-              warning
-              onPress={() => navigation.navigate(LISTOFRENT)}
-            >
+            <Button full info onPress={() => navigation.navigate(LISTOFRENT)}>
               <Text>Camera</Text>
             </Button>
             <Button
@@ -79,6 +69,7 @@ class Profile extends Component {
             </Button>
           </>
         )}
+        <CreateProduct />
         <LogoutButton />
       </View>
     );
