@@ -23,34 +23,62 @@ class Profile extends Component {
   }
   render() {
     const { profile, navigation } = this.props;
-    console.log(profile, "Profilesssss");
-    console.log("Profile");
-
-    console.log(profile);
 
     return (
       <View>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 30,
-            fontWeight: "bold",
-            opacity: 1,
-            textAlign: "center",
-
-            textShadowColor: "#FFD700",
-            textShadowOffset: { width: 0, height: 0 },
-            textShadowRadius: 8,
-          }}
-        >
-          {/* {profile.user.username} */}
-        </Text>
-        <Button full warning onPress={() => navigation.navigate(LISTOFRENT)}>
-          <Text>Camera</Text>
-        </Button>
-        <Button full warning onPress={() => navigation.navigate(RENT)}>
-          <Text>RENTERQR</Text>
-        </Button>
+        {!profile.user ? (
+          <Text>Welcome</Text>
+        ) : (
+          <>
+            <Text
+              style={{
+                color: "black",
+                fontSize: 30,
+                fontWeight: "bold",
+                opacity: 1,
+                textAlign: "center",
+              }}
+            >
+              {profile.user.first_name} {profile.user.last_name}
+            </Text>
+            <Text
+              style={{
+                color: "black",
+                fontSize: 30,
+                fontWeight: "bold",
+                opacity: 1,
+                textAlign: "center",
+              }}
+            >
+              Location: {profile.location}
+            </Text>
+            <Text
+              style={{
+                color: "black",
+                fontSize: 30,
+                fontWeight: "bold",
+                opacity: 1,
+                textAlign: "center",
+              }}
+            >
+              Email: {profile.user.email}
+            </Text>
+            <Button
+              full
+              warning
+              onPress={() => navigation.navigate(LISTOFRENT)}
+            >
+              <Text>Camera</Text>
+            </Button>
+            <Button
+              full
+              warning
+              onPress={() => navigation.navigate(RENT, { profile })}
+            >
+              <Text>RENTERQR</Text>
+            </Button>
+          </>
+        )}
         <LogoutButton />
       </View>
     );

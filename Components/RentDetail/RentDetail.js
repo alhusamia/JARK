@@ -12,11 +12,11 @@ import styles from "./styles";
 
 class RentDetail extends React.Component {
   state = {
-    data: `Product Name:${this.props.route.params.product.name} \n Owner:${this.props.route.params.product.owner}`,
+    data: `Product Name:${this.props.route.params.product.name} \n Owner:${this.props.route.params.product.owner}\n Renter:${this.props.route.params.profile.first_name} ${this.props.route.params.profile.last_name}`,
   };
 
   render() {
-    const { product } = this.props.route.params;
+    const { product, profile } = this.props.route.params;
 
     return (
       <ScrollView style={styles.container}>

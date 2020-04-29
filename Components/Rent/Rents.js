@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 
 class Rents extends Component {
   render() {
+    const { profile } = this.props.route.params;
     const { navigation, listofrents } = this.props;
     const rents = listofrents.map((product) => (
       <ImageBackground
@@ -30,7 +31,7 @@ class Rents extends Component {
         <ListItem
           button
           style={styles.listitem}
-          onPress={() => navigation.navigate(RENTDETAIL, { product })}
+          onPress={() => navigation.navigate(RENTDETAIL, { product, profile })}
         >
           <Body>
             <Text style={styles.text}>{product.name}</Text>
@@ -42,6 +43,7 @@ class Rents extends Component {
       </ImageBackground>
     ));
 
+    console.table(profile);
     return (
       <Content>
         <List>{rents}</List>

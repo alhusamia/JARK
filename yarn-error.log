@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-qrcode-scanner
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @react-navigation/drawer
 
 PATH: 
   C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\PC\AppData\Local\Programs\Python\Python37-32;C:\Users\PC\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\PC\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\PC\AppData\Roaming\npm;C:\Users\PC\AppData\Local\atom\bin;C:\Users\PC\AppData\Local\Yarn\bin
@@ -28,10 +28,13 @@ npm manifest:
     },
     "dependencies": {
       "@react-native-community/masked-view": "0.1.6",
+      "@react-navigation/drawer": "^5.5.1",
       "@react-navigation/native": "^5.1.6",
       "@react-navigation/stack": "^5.2.13",
       "axios": "^0.19.2",
       "expo": "~37.0.3",
+      "expo-barcode-scanner": "~8.1.0",
+      "expo-constants": "~9.0.0",
       "jwt-decode": "^2.2.0",
       "native-base": "2.13.8",
       "react": "~16.9.0",
@@ -47,7 +50,7 @@ npm manifest:
       "react-native-screens": "~2.2.0",
       "react-native-vector-icons": "^6.6.0",
       "react-native-web": "~0.11.7",
-      "react-native-webview": "^9.3.0",
+      "react-native-webview": "8.1.1",
       "react-navigation": "^4.3.8",
       "react-redux": "^7.2.0",
       "redux": "^4.0.5",
@@ -1219,6 +1222,14 @@ Lockfile:
       query-string "^6.12.0"
       react-is "^16.13.0"
       use-subscription "^1.4.0"
+  
+  "@react-navigation/drawer@^5.5.1":
+    version "5.5.1"
+    resolved "https://registry.yarnpkg.com/@react-navigation/drawer/-/drawer-5.5.1.tgz#f18da67b8528466d4aafd4e1f92b8b8e06c6f26d"
+    integrity sha512-LYgaS7bzyg6vphDLChQlUcyq3UmHl9OJlZa6HFogiZzNVW5pqNbJC5qUlL8Gw8pcH1FpJTUGW6/w4lKOxIGY5w==
+    dependencies:
+      color "^3.1.2"
+      react-native-iphone-x-helper "^1.2.1"
   
   "@react-navigation/native@^3.7.12":
     version "3.7.12"
@@ -2485,6 +2496,14 @@ Lockfile:
       md5-file "^3.2.3"
       path-browserify "^1.0.0"
       url-parse "^1.4.4"
+  
+  expo-barcode-scanner@~8.1.0:
+    version "8.1.0"
+    resolved "https://registry.yarnpkg.com/expo-barcode-scanner/-/expo-barcode-scanner-8.1.0.tgz#2f1504465725673a18453d976062b3aab55dd867"
+    integrity sha512-S9fpP4NKRml/xVpioHpixn0RSsGs3mgdhwjGjMitl3Cx/euxJtVy1UZK1zX5/62vFtO6gl/PQgeLGpv8Bm8w+w==
+    dependencies:
+      lodash "^4.6.0"
+      prop-types "^15.6.0"
   
   expo-constants@~9.0.0:
     version "9.0.0"
@@ -4781,10 +4800,10 @@ Lockfile:
       prop-types "^15.6.0"
       react-timer-mixin "^0.13.4"
   
-  react-native-webview@^9.3.0:
-    version "9.3.0"
-    resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-9.3.0.tgz#f0a7d76bae288c78f63e7dad66bca7ed1e6c9386"
-    integrity sha512-mgRTMXELSULf9y7PjJiGO5pZs9tFbXI4fG9zK3rpCR9R9/bJwVdvLW6yIbLZ+8m36Upu9Go/Qsi+42n4UGZMkQ==
+  react-native-webview@8.1.1:
+    version "8.1.1"
+    resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-8.1.1.tgz#7f06546972fd4b2113ad3039837f461bab81cd15"
+    integrity sha512-Bt1vwdz/JMPh39SW2H64p9NrlfVHXrsFFmMGa1O6I9UBP0Y201EofnT3xK3uY4/7KMWeM372MHrmLpyp1AJ4dg==
     dependencies:
       escape-string-regexp "2.0.0"
       invariant "2.2.4"
