@@ -9,7 +9,7 @@ import {
   Button,
 } from "native-base";
 import { connect } from "react-redux";
-
+import { getProfile } from "../../redux/actions";
 // Components
 import LogoutButton from "./LogoutButton";
 
@@ -18,9 +18,15 @@ import { render } from "react-dom";
 import { LISTOFRENT, RENT } from "../../Navigation/screenNames";
 
 class Profile extends Component {
+  componentDidMount() {
+    this.props.getProfile();
+  }
   render() {
     const { profile, navigation } = this.props;
-    console.log(profile, "Profile");
+    console.log(profile, "Profilesssss");
+    console.log("Profile");
+
+    console.log(profile);
 
     return (
       <View>
@@ -37,7 +43,7 @@ class Profile extends Component {
             textShadowRadius: 8,
           }}
         >
-          TTTTTTTTTHJJJJLK
+          {/* {profile.user.username} */}
         </Text>
         <Button full warning onPress={() => navigation.navigate(LISTOFRENT)}>
           <Text>Camera</Text>
@@ -54,5 +60,6 @@ class Profile extends Component {
 const mapStateToProps = ({ profile }) => ({
   profile,
 });
+const mapDispatchToProps = { getProfile };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

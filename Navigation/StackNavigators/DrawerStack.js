@@ -10,7 +10,6 @@ import {
   LISTOFRENT,
   RENT,
   RENTDETAIL,
-  MENU,
 } from "../screenNames";
 import Login from "../../Components/Authentication/Login";
 import Signup from "../../Components/Authentication/Signup";
@@ -19,17 +18,12 @@ import ListOfRent from "../../Components/Profile/ListOfRent";
 
 import RentDetail from "../../Components/RentDetail/RentDetail";
 import Rents from "../../Components/Rent/Rents";
-
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import DrawerStack from "./DrawerStack";
 const { Navigator, Screen } = createDrawerNavigator();
-
-import Camera from "../../Components/Camera";
-
 
 // const { Navigator, Screen } = createStackNavigator();
 
-function UserStack({ user }) {
+function DraweStack({ user }) {
   return (
     <Navigator
       initialRouteName={PROFILE}
@@ -43,43 +37,21 @@ function UserStack({ user }) {
         headerTintColor: "white",
       }}
     >
-      {!user ? (
-        <>
-          <Screen
-            name={LOGIN}
-            component={Login}
-            options={{ headerShown: false }}
-          />
-          <Screen
-            name={SIGNUP}
-            component={Signup}
-            options={{ headerShown: false }}
-          />
-        </>
-      ) : (
-        <>
-          <Screen
-            name={PROFILE}
-            component={Profile}
-            options={{ headerShown: false }}
-          />
-          <Screen
-            name={LISTOFRENT}
-            component={Camera}
-            options={{ headerShown: false }}
-          />
-          <Screen
-            name={RENT}
-            component={Rents}
-            options={{ headerShown: false }}
-          />
-          <Screen
-            name={RENTDETAIL}
-            component={RentDetail}
-            options={{ headerShown: false }}
-          />
-          <Screen name={MENU} component={DrawerStack} />
-        </>
+      <Screen
+        name={PROFILE}
+        component={Profile}
+        options={{ headerShown: false }}
+      />
+      <Screen name={SEARCHLIST} component={SearchList} />
+      <Screen
+        name={MAIN}
+        component={Home}
+        options={({ navigation }) => {
+          return {
+            headerRight: () => <SearchButton navigation={navigation} />,
+          };
+        }}
+      />
       )}
     </Navigator>
   );
@@ -87,5 +59,5 @@ function UserStack({ user }) {
 const mapStateToProps = ({ user }) => ({
   user,
 });
-export default connect(mapStateToProps)(UserStack);
+export default connect(mapStateToProps)(DraweStack);
 // export default UserStack;
