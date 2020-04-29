@@ -46,7 +46,7 @@ class Profile extends Component {
           {/* {profile.user.username} */}
         </Text>
         <Button full warning onPress={() => navigation.navigate(LISTOFRENT)}>
-          <Text>List of Rent</Text>
+          <Text>Camera</Text>
         </Button>
         <Button full warning onPress={() => navigation.navigate(RENT)}>
           <Text>RENTERQR</Text>

@@ -19,9 +19,13 @@ import ListOfRent from "../../Components/Profile/ListOfRent";
 
 import RentDetail from "../../Components/RentDetail/RentDetail";
 import Rents from "../../Components/Rent/Rents";
+
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerStack from "./DrawerStack";
 const { Navigator, Screen } = createDrawerNavigator();
+
+import Camera from "../../Components/Camera";
+
 
 // const { Navigator, Screen } = createStackNavigator();
 
@@ -61,7 +65,7 @@ function UserStack({ user }) {
           />
           <Screen
             name={LISTOFRENT}
-            component={ListOfRent}
+            component={Camera}
             options={{ headerShown: false }}
           />
           <Screen
