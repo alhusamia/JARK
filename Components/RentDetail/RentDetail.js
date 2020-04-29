@@ -12,18 +12,8 @@ import styles from "./styles";
 
 class RentDetail extends React.Component {
   state = {
-    product_id: "",
-    product_name: "",
-    product_owner: "",
- 
+    data: `Product Name:${this.props.route.params.product.name} \n Owner:${this.props.route.params.product.owner}`,
   };
-  componentDidMount() {
-    this.setState({
-      product_id: this.props.route.params.product.id,
-      product_name: this.props.route.params.product.name,
-      product_owner: this.props.route.params.product.owner,
-    });
-  }
 
   render() {
     const { product } = this.props.route.params;
@@ -47,7 +37,7 @@ class RentDetail extends React.Component {
           </View>
           <Text style={styles.infoDescription}>{product.owner}</Text>
           <QRCode
-            value={this.state}
+            value={this.state.data}
             size={200}
             bgColor="black"
             fgColor="white"
