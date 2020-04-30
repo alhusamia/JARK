@@ -4,16 +4,12 @@ import { SearchBar } from "react-native-elements";
 import { View, FlatList } from "react-native";
 
 import Product from "../Product/Product";
-import { getAllProducts } from "../../redux/actions";
 
 class SearchList extends Component {
   state = {
     data: [],
     value: "",
   };
-  componentDidMount() {
-    this.props.getAllProducts();
-  }
   renderSeparator = () => {
     return (
       <View
@@ -31,12 +27,9 @@ class SearchList extends Component {
       value: text,
     });
 
-    const newData = this.props.allproducts.filter((item) => {
-      const itemData = `${item.name.toUpperCase()} `;
-      const textData = text.toUpperCase();
-     
-      return itemData.includes(textData);
-    });
+    const newData = this.props.allproducts.filter((item) =>
+      item.name.toUpperCase().includes(text.toUpperCase())
+    );
     this.setState({
       data: newData,
     });
@@ -78,6 +71,5 @@ class SearchList extends Component {
 const mapStateToProps = ({ allproducts }) => ({
   allproducts,
 });
-const mapDispatchToProps = { getAllProducts };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchList);
+export default connect(mapStateToProps)(SearchList);

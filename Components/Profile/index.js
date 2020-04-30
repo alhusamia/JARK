@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { Text, View, Button } from "native-base";
-import { Modal } from "react-native";
 import { connect } from "react-redux";
-import { getProfile } from "../../redux/actions";
 // Components
 import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
-
-import styles from "./styles";
-import { render } from "react-dom";
+import { getProfile } from "../../redux/actions";
 import { LISTOFRENT, RENT } from "../../Navigation/screenNames";
 
 class Profile extends Component {
@@ -67,9 +63,10 @@ class Profile extends Component {
             >
               <Text>RENTERQR</Text>
             </Button>
+            <CreateProduct />
           </>
         )}
-        <CreateProduct />
+
         <LogoutButton />
       </View>
     );
@@ -80,5 +77,4 @@ const mapStateToProps = ({ profile }) => ({
   profile,
 });
 const mapDispatchToProps = { getProfile };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

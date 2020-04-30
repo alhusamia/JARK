@@ -32,7 +32,7 @@ import CreateProduct from "../../Components/CreateProduct";
 function UserStack({ user }) {
   return (
     <Navigator
-      initialRouteName={PROFILE}
+      initialRouteName={!user ? { LOGIN } : { PROFILE }}
       screenOptions={{
         headerStyle: {
           backgroundColor: "black",

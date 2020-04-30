@@ -3,17 +3,13 @@ import { List, Content } from "native-base";
 
 import { connect } from "react-redux";
 
-import { getAllProducts } from "../../redux/actions";
 import Product from "../Product/Product";
 
 class AllProduct extends Component {
-  componentDidMount() {
-    this.props.getAllProducts();
-  }
   render() {
     const { navigation, allproducts } = this.props;
 
-    const product = allproducts.map((product) => (
+    const products = allproducts.map((product) => (
       <Product
         key={product.name + product.id}
         product={product}
@@ -23,7 +19,7 @@ class AllProduct extends Component {
 
     return (
       <Content>
-        <List>{product}</List>
+        <List>{products}</List>
       </Content>
     );
   }
@@ -31,6 +27,5 @@ class AllProduct extends Component {
 const mapStateToProps = ({ allproducts }) => ({
   allproducts,
 });
-const mapDispatchToProps = { getAllProducts };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllProduct);
+export default connect(mapStateToProps)(AllProduct);

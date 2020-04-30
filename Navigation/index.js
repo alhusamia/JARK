@@ -9,20 +9,20 @@ import {
   SEARCH,
   SEARCHLIST,
   RENTLIST,
-  PRODUCT,
+  PRODUCT_DETAIL,
   MENU,
 } from "./screenNames";
 import UserStack from "./StackNavigators/UserStack";
 import Home from "../Components/AllProducts";
 import SearchList from "../Components/Search/SearchList";
 import RentStack from "./StackNavigators/RentStack";
-import Detail from "../Components/ProductDetail/ProductDetail";
+import ProductDetail from "../Components/ProductDetail/ProductDetail";
 import SearchButton from "../Components/Search/SearchButton";
 import DrawerStack from "./StackNavigators/DrawerStack";
 
 const { Navigator, Screen } = createStackNavigator();
 // const { Navigator, Screen } = createDrawerNavigator();
-function RootTabNavigator() {
+function RootNavigator() {
   return (
     <Navigator initialRouteName={USER}>
       <Screen name={USER} component={UserStack} />
@@ -30,20 +30,18 @@ function RootTabNavigator() {
       <Screen
         name={MAIN}
         component={Home}
-        options={({ navigation }) => {
-          return {
-            headerRight: () => <SearchButton navigation={navigation} />,
-          };
-        }}
+        options={({ navigation }) => ({
+          headerRight: () => <SearchButton navigation={navigation} />,
+        })}
       />
       <Screen name={SEARCHLIST} component={SearchList} />
       <Screen
-        name={PRODUCT}
-        component={Detail}
+        name={PRODUCT_DETAIL}
+        component={ProductDetail}
         options={({ route }) => ({ title: route.params.product.name })}
       />
     </Navigator>
   );
 }
 
-export default RootTabNavigator;
+export default RootNavigator;

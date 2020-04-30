@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Detail from "../../Components/ProductDetail/ProductDetail";
 
 // Screens
-import { CATEGORIES, CATEGORY, PRODUCT } from "../screenNames";
+import { CATEGORIES, CATEGORY, PRODUCT, PRODUCT_DETAIL } from "../screenNames";
 
 // Config
 import screenOptions from "../screenOptions";
@@ -23,7 +23,7 @@ export default function ShopStack() {
         options={({ route }) => ({ title: route.params.category.title })}
       /> */}
       <Screen
-        name={PRODUCT}
+        name={PRODUCT_DETAIL}
         component={Detail}
         // options={({ route }) => ({ title: route.params.product.name })}
       />
