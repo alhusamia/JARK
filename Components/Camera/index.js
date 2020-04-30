@@ -61,7 +61,7 @@ class Camera extends React.Component {
             }
           />
         )}
-        {/* <Modal transparent={true} visible={this.state.show}>
+        <Modal transparent={true} visible={this.state.show}>
           <View style={{ backgroundColor: "#000000aa", flex: 1 }}>
             <View
               style={{
@@ -83,13 +83,13 @@ class Camera extends React.Component {
               <Button
                 title="Rent"
                 onPress={() => {
-                  this.props.Rent(data, time);
+                  this.props.Rent({ product: Number(data) });
                   this.setState({ show: false });
                 }}
               />
             </View>
           </View>
-        </Modal> */}
+        </Modal>
       </View>
     );
   }
@@ -100,8 +100,10 @@ class Camera extends React.Component {
       show: true,
       data: data,
     });
-    alert("Rented");
-    this.props.Rent(data);
+    // alert(data);
+
+    // const obj = { product: Number(data) };
+    // this.props.Rent(obj);
   };
 }
 
