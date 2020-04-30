@@ -1,4 +1,5 @@
-export const MAIN = "Home";
+export const MAIN = "MAIN";
+export const HOME = "HOME";
 
 // Auth
 export const LOGIN = "Login";
@@ -15,7 +16,7 @@ export const SEARCHLIST = "SearchList";
 //Rent
 export const RENTLIST = "RENTLIST";
 export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
-export const LISTOFRENT = "List Of Rent";
+export const CAMERA = "Camera";
 
 export const RENT = "Rent";
 export const RENTDETAIL = "Rent Detail";

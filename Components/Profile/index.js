@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
 import { getProfile } from "../../redux/actions";
-import { LISTOFRENT, RENT } from "../../Navigation/screenNames";
+import { RENT, CAMERA } from "../../Navigation/screenNames";
 
 class Profile extends Component {
   componentDidMount() {
@@ -53,7 +53,7 @@ class Profile extends Component {
             >
               Email: {profile.user.email}
             </Text>
-            <Button full info onPress={() => navigation.navigate(LISTOFRENT)}>
+            <Button full info onPress={() => navigation.navigate(CAMERA)}>
               <Text>Camera</Text>
             </Button>
             <Button

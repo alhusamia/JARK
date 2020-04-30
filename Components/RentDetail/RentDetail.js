@@ -12,7 +12,7 @@ import styles from "./styles";
 
 class RentDetail extends React.Component {
   state = {
-    data: `Product Name:${this.props.route.params.product.name} \n Owner:${this.props.route.params.product.owner}\n Renter:${this.props.route.params.profile.first_name} ${this.props.route.params.profile.last_name}`,
+    data: `Product Name:${this.props.route.params.product.name} \n Owner:${this.props.route.params.product.owner}\n Renter:${this.props.route.params.profile.user.first_name} ${this.props.route.params.profile.user.last_name} }`,
   };
 
   render() {

@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import { checkForToken, getAllProducts } from "./actions";
+import { checkForToken, getAllProducts, getProfile } from "./actions";
 
 import rootReducer from "./reducers";
 
@@ -14,5 +14,6 @@ const store = createStore(
 
 store.dispatch(checkForToken());
 store.dispatch(getAllProducts());
+// store.dispatch(getProfile());
 
 export default store;

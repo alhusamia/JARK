@@ -7,6 +7,7 @@ import {
   SEARCHLIST,
   MAIN,
   USER,
+  HOME,
 } from "../../Navigation/screenNames";
 
 // Styling Components
@@ -27,7 +28,7 @@ class Login extends Component {
     const { username, password } = this.state;
     const { errors } = this.props;
 
-    const goToCategoryList = () => navigation.navigate(MAIN);
+    const goToCategoryList = () => navigation.navigate(HOME, { screen: MAIN });
     return (
       <View style={styles.authContainer}>
         <Text style={styles.authTitle}>Login</Text>
