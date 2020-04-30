@@ -5,6 +5,7 @@ import errors from "./errors";
 import allproducts from "./allproducts";
 import profile from "./profile";
 import listofrents from "./listofrents";
+import rent from "./rent";
 
 export default combineReducers({
   user,
@@ -12,4 +13,5 @@ export default combineReducers({
   allproducts,
   profile,
   listofrents,
+  rent,
 });

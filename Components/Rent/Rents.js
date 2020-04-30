@@ -42,8 +42,6 @@ class Rents extends Component {
         </ListItem>
       </ImageBackground>
     ));
-
-    console.table(profile);
     return (
       <Content>
         <List>{rents}</List>

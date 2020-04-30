@@ -1,14 +1,21 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, Modal, TextInput } from "react-native";
 import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 
+//action
+import { Rent } from "../../redux/actions";
+import { connect } from "react-redux";
+
 import { BarCodeScanner } from "expo-barcode-scanner";
 
-export default class BarcodeScannerExample extends React.Component {
+class Camera extends React.Component {
   state = {
     hasCameraPermission: null,
     scanned: false,
+    show: false,
+    time: "",
+    data: "",
   };
 
   async componentDidMount() {
@@ -24,6 +31,7 @@ export default class BarcodeScannerExample extends React.Component {
 
   render() {
     const { hasCameraPermission, scanned } = this.state;
+    const { time, data } = this.state;
 
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
@@ -53,14 +61,51 @@ export default class BarcodeScannerExample extends React.Component {
             }
           />
         )}
+        {/* <Modal transparent={true} visible={this.state.show}>
+          <View style={{ backgroundColor: "#000000aa", flex: 1 }}>
+            <View
+              style={{
+                backgroundColor: "#ffffff",
+                margin: 50,
+                padding: 40,
+                borderRadius: 10,
+                flex: 1,
+              }}
+            >
+              <Text>{data}</Text>
+              <TextInput
+                placeholder="Rent Duration"
+                placeholderTextColor="#A6AEC1"
+                value={time}
+                onChangeText={(time) => this.setState({ time })}
+              />
+
+              <Button
+                title="Rent"
+                onPress={() => {
+                  this.props.Rent(data, time);
+                  this.setState({ show: false });
+                }}
+              />
+            </View>
+          </View>
+        </Modal> */}
       </View>
     );
   }
 
-  handleBarCodeScanned = ({ type, data }) => {
+  handleBarCodeScanned = ({ data }) => {
     this.setState({
       scanned: true,
+      show: true,
+      data: data,
     });
-    alert(`${data} `);
+    alert("Rented");
+    this.props.Rent(data);
   };
 }
+
+const mapDispatchToProps = { Rent };
+
+export default connect(null, mapDispatchToProps)(Camera);
+// export default Camera;

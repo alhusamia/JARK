@@ -14,3 +14,4 @@ export const getAllProducts = () => async (dispatch) => {
     console.error("Error while fetching allproducts", err);
   }
 };
+ 
