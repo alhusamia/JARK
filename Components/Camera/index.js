@@ -32,7 +32,12 @@ class Camera extends React.Component {
   render() {
     const { hasCameraPermission, scanned } = this.state;
     const { time, data } = this.state;
-
+    const datanew = data.split("\n");
+    const obj = {
+      productId: Number(datanew[0]),
+      owner: datanew[1],
+      renter: datanew[2],
+    };
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
     }
@@ -100,8 +105,8 @@ class Camera extends React.Component {
       show: true,
       data: data,
     });
-    alert("Rented");
-    this.props.Rent(data);
+    // this.props.Rent(data);
+    alert(`${data}`);
   };
 }
 
