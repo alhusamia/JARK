@@ -4,3 +4,4 @@ export * from "./allproducts";
 export * from "./profile";
 export * from "./listofrents";
 export * from "./rent";
+export * from "./createproduct";
