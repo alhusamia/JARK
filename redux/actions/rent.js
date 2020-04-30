@@ -2,10 +2,12 @@ import instance from "./instance";
 
 import { RENT } from "./types";
 
-export const Rent = (productData) => async (dispatch) => {
+export const Rent = (productID) => async (dispatch) => {
   try {
-    const res = await instance.post(`rent/`, productData);
+    console.log(productID);
+    const res = await instance.post(`rent/`, productID);
     const product = res.data;
+    console.log(product);
     dispatch({
       type: RENT,
       payload: product,
