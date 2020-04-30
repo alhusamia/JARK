@@ -3,7 +3,7 @@ import { ImageBackground, View } from "react-native";
 import { ListItem, Text, Body, Right, Button } from "native-base";
 
 // Screens
-import { PRODUCT } from "../../Navigation/screenNames";
+import { PRODUCT_DETAIL } from "../../Navigation/screenNames";
 
 // Style
 import styles from "./styles";
@@ -21,7 +21,7 @@ class Product extends Component {
         <ListItem
           button
           style={styles.listitem}
-          onPress={() => navigation.navigate(PRODUCT, { product })}
+          onPress={() => navigation.navigate(PRODUCT_DETAIL, { product })}
         >
           <Body>
             <Text style={styles.text}>{product.name}</Text>
