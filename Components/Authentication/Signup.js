@@ -35,52 +35,60 @@ class Signup extends Component {
             ))}
           </View>
         )}
+        {/* <TextInput
+              placeholder="UserName"
+              style={styles.TextInput}
+              placeholderTextColor="black"
+              value={username}
+              onChangeText={(username) => this.setState({ username })}
+            /> */}
         <TextInput
-          style={styles.authTextInput}
+          style={styles.TextInput}
           placeholder="First Name"
-          placeholderTextColor="#A6AEC1"
+          placeholderTextColor="black"
           value={first_name}
           onChangeText={(first_name) => this.setState({ first_name })}
         />
         <TextInput
-          style={styles.authTextInput}
+          style={styles.TextInput}
           placeholder="Last Name"
-          placeholderTextColor="#A6AEC1"
+          placeholderTextColor="black"
           value={last_name}
           onChangeText={(last_name) => this.setState({ last_name })}
         />
 
         <TextInput
-          style={styles.authTextInput}
+          style={styles.TextInput}
           placeholder="Email"
-          placeholderTextColor="#A6AEC1"
+          placeholderTextColor="black"
           value={email}
           onChangeText={(email) => this.setState({ email })}
         />
         <TextInput
-          style={styles.authTextInput}
+          style={styles.TextInput}
           placeholder="Username"
-          placeholderTextColor="#A6AEC1"
+          placeholderTextColor="black"
           value={username}
           onChangeText={(username) => this.setState({ username })}
         />
         <TextInput
-          style={styles.authTextInput}
+          style={styles.TextInput}
           placeholder="Password"
-          placeholderTextColor="#A6AEC1"
+          placeholderTextColor="black"
           secureTextEntry={true}
           value={password}
           onChangeText={(password) => this.setState({ password })}
         />
         <TouchableOpacity
-          style={styles.authButton}
+          style={styles.button}
           onPress={() => signup(this.state)}
         >
           <Text style={styles.authButtonText}>Sign up</Text>
         </TouchableOpacity>
         <Text
           style={styles.authOther}
-          onPress={() => navigation.replace(USER, { screen: LOGIN })}
+          // onPress={() => navigation.replace(USER, { screen: LOGIN })}
+          onPress={() => navigation.replace(LOGIN)}
         >
           Click here to log in!
         </Text>
