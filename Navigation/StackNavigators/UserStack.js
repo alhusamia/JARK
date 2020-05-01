@@ -43,8 +43,16 @@ function UserStack({ user }) {
     >
       {!user ? (
         <>
-          <Screen name={LOGIN} component={Login} />
-          <Screen name={SIGNUP} component={Signup} />
+          <Screen
+            name={LOGIN}
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Screen
+            name={SIGNUP}
+            component={Signup}
+            options={{ headerShown: false }}
+          />
         </>
       ) : (
         <>
