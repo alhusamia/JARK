@@ -10,6 +10,7 @@ import {
   RENT,
   RENTDETAIL,
   CAMERA,
+  OWNERPROFILE,
 } from "../screenNames";
 import Login from "../../Components/Authentication/Login";
 import Signup from "../../Components/Authentication/Signup";
@@ -24,7 +25,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Camera from "../../Components/Camera";
 import CreateProduct from "../../Components/CreateProduct";
-
+import OwnerProfile from "../../Components/OwnerProfile";
 const { Navigator, Screen } = createStackNavigator();
 
 function UserStack({ user }) {
@@ -52,6 +53,7 @@ function UserStack({ user }) {
           <Screen name={CAMERA} component={Camera} />
           <Screen name={RENT} component={Rents} />
           <Screen name={RENTDETAIL} component={RentDetail} />
+          <Screen name={OWNERPROFILE} component={OwnerProfile} />
         </>
       )}
     </Navigator>
