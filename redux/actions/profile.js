@@ -1,5 +1,4 @@
 import instance from "./instance";
-
 import { SET_PROFILE } from "./types";
 
 export const getProfile = () => async (dispatch) => {

@@ -9,6 +9,7 @@ export const SIGNUP = "Signup";
 export const USER = "User";
 export const PROFILE = "Profile";
 export const MENU = "Menu";
+
 //Search
 export const SEARCH = "Search";
 export const SEARCHLIST = "SearchList";
@@ -20,3 +21,4 @@ export const CAMERA = "Camera";
 
 export const RENT = "Rent";
 export const RENTDETAIL = "Rent Detail";
+export const OWNERPROFILE = "Owner Profile";
