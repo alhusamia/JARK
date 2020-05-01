@@ -15,6 +15,7 @@ import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import { createProduct } from "../../redux/actions";
 import { connect } from "react-redux";
+import styles from "./styles";
 class CreateProduct extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   state = {
@@ -54,6 +55,7 @@ class CreateProduct extends Component {
   };
   render() {
     const { name, description, image } = this.state;
+
     const newProduct = { name: name, description: description, image: image };
     return (
       <>
@@ -72,7 +74,7 @@ class CreateProduct extends Component {
                 padding: 40,
                 borderRadius: 10,
                 marginTop: 200,
-                height: 300,
+                height: 400,
               }}
             >
               <Text>Add your product</Text>
@@ -84,19 +86,26 @@ class CreateProduct extends Component {
                 }}
               >
                 <TextInput
+                  style={styles.authTextInput}
                   placeholder="Product Name"
                   placeholderTextColor="#A6AEC1"
                   value={name}
                   onChangeText={(name) => this.setState({ name })}
                 />
                 <TextInput
+                  style={styles.authTextInput}
                   placeholder="Description"
                   placeholderTextColor="#A6AEC1"
                   value={description}
                   onChangeText={(description) => this.setState({ description })}
                 />
-
-                <Button title="Choose Image" onPress={this._pickImage} />
+                {/* <Text> */}
+                <Button
+                  style={styles.authTextInput}
+                  title="Choose Image"
+                  onPress={this._pickImage}
+                />
+                {/* </Text> */}
               </View>
               <Button
                 title="hide modal"
@@ -108,6 +117,7 @@ class CreateProduct extends Component {
                 title="Add"
                 onPress={() => {
                   this.props.createProduct(newProduct);
+                  this.setState({ show: false });
                 }}
               />
             </View>
