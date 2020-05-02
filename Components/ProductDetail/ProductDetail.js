@@ -26,7 +26,6 @@ class ProductDetail extends React.Component {
           <View>
             <TouchableHighlight>
               <View style={styles.imageContainer}>
-                {/* <Image style={styles.image} source={{ uri: product.image }} /> */}
                 <Slideshow
                   dataSource={[
                     { url: product.image },
@@ -61,7 +60,6 @@ class ProductDetail extends React.Component {
             </Button>
           </View>
 
-
           <Button
             style={styles.ItemContainer}
             // hmmm...
@@ -85,10 +83,9 @@ class ProductDetail extends React.Component {
     );
   }
 }
-// const mapDispatchToProps = { addProductToRentList };
+
 const mapDispatchToProps = (dispatch) => ({
   addProductToRentList: (product) => dispatch(addProductToRentList(product)),
   getOwnerProfile: (ProfileID) => dispatch(getOwnerProfile(ProfileID)),
 });
 export default connect(null, mapDispatchToProps)(ProductDetail);
-// export default ProductDetail;
