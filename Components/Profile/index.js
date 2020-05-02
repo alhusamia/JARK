@@ -25,10 +25,12 @@ class Profile extends Component {
 
   render() {
     const { profile, navigation, allproducts, listofrents, user } = this.props;
-    const myProduct = allproducts
+    let myProduct=[]
+    if(user){
+     myProduct = allproducts
       .filter((product) => product.owner.user.id === user.user_id)
       .map((product) => (
-        <View style={styles.mediaImageContainer}>
+        <View style={styles.mediaImageContainer} key={product.name + product.id}>
           <Image
             source={{ uri: product.image }}
             style={styles.image}
@@ -38,9 +40,9 @@ class Profile extends Component {
             {product.owner.owner}
           </Text>
         </View>
-      ));
+      ))}
     const myRent = listofrents.map((product) => (
-      <View style={styles.mediaImageContainer}>
+      <View style={styles.mediaImageContainer} key={product.name + product.id}>
         <Image
           source={{ uri: product.image }}
           style={styles.image}
@@ -65,58 +67,6 @@ class Profile extends Component {
               color="#52575D"
             ></Ionicons>
             <Ionicons names="md-more" size={24} color="#52575D"></Ionicons>
-            {/* {!profile.user ? (
-              <Text>Welcome</Text>
-            ) : (
-              <>
-                <Text
-                  style={{
-                    color: "black",
-                    fontSize: 30,
-                    fontWeight: "bold",
-                    opacity: 1,
-                    textAlign: "center",
-                  }}
-                >
-                  {profile.user.first_name} {profile.user.last_name}
-                </Text>
-                <Text
-                  style={{
-                    color: "black",
-                    fontSize: 30,
-                    fontWeight: "bold",
-                    opacity: 1,
-                    textAlign: "center",
-                  }}
-                >
-                  Location: {profile.location}
-                </Text>
-                <Text
-                  style={{
-                    color: "black",
-                    fontSize: 30,
-                    fontWeight: "bold",
-                    opacity: 1,
-                    textAlign: "center",
-                  }}
-                >
-                  Email: {profile.user.email}
-                </Text>
-                <Button full info onPress={() => navigation.navigate(CAMERA)}>
-                  <Text>Camera</Text>
-                </Button>
-                <Button
-                  full
-                  warning
-                  onPress={() => navigation.navigate(RENT, { profile })}
-                >
-                  <Text>RENTERQR</Text>
-                </Button>
-                <CreateProduct />
-              </>
-            )}
-
-            */}
           </View>
 
           <View style={{ alignSelf: "center", marginLeft: 16 }}>
@@ -143,15 +93,6 @@ class Profile extends Component {
                     resizeMode="center"
                   />
                 </View>
-                {/* <View style={styles.add}>
-              <Ionicons
-                name="ios-add"
-                size={48}
-                color="#DFD8C8"
-                style={{ marginTop: 4, marginLeft: 2 }}
-                
-              ></Ionicons>
-            </View> */}
                 <View style={styles.infoContainer}>
                   <Text
                     style={[styles.text, { fontWeight: "200", fontSize: 36 }]}

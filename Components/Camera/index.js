@@ -30,7 +30,7 @@ class Camera extends React.Component {
   };
 
   render() {
-    const { hasCameraPermission, scanned, user } = this.state;
+    const { hasCameraPermission, scanned } = this.state;
     const { time, data } = this.state;
     const { profile } = this.props.route.params;
     const datanew = data.split(" \n ");
@@ -39,8 +39,6 @@ class Camera extends React.Component {
       owner: datanew[1],
       renter: datanew[2],
     };
-    
-    console.log(obj);
 
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
@@ -125,18 +123,9 @@ class Camera extends React.Component {
             data: data,
           });
     }
-    // this.setState({
-    //   scanned: true,
-    //   show: true,
-    //   data: data,
-    // });
   };
 }
 
-const mapStateToProps = ({ user }) => ({
-  user,
-});
-
 const mapDispatchToProps = { Rent };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Camera);
+export default connect(null, mapDispatchToProps)(Camera);

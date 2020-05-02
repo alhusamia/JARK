@@ -7,11 +7,10 @@ import { getOwnerProfile } from "../../redux/actions";
 
 class OwnerProfile extends Component {
   componentDidMount() {
-    this.props.getOwnerProfile(this.props.route.params.product.owner.owner_id);
+    this.props.getOwnerProfile(this.props.route.params.product.owner.user.id);
   }
   render() {
     const { ownerprofile } = this.props;
-    console.log(ownerprofile);
     return (
       <View>
         {!ownerprofile.user ? (

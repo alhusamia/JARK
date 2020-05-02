@@ -67,7 +67,7 @@ class CreateProduct extends Component {
             this.setState({ show: true });
           }}
           size={35}
-          style={{ marginLeft: 350, marginTop: -45 }}
+          style={{ marginLeft: 250, marginTop: -45 }}
         />
         <Modal transparent={true} visible={this.state.show}>
           <View style={{ backgroundColor: "#000000aa", flex: 1 }}>

@@ -9,6 +9,6 @@ export const createProduct = (product) => async (dispatch) => {
     const productnew = res.data;
     dispatch(getAllProducts());
   } catch (err) {
-    console.error("Error while Renting", err);
+    console.error("Error while Creating", err);
   }
 };
