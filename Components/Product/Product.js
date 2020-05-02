@@ -27,7 +27,7 @@ class Product extends Component {
             <Text style={styles.text}>{product.name}</Text>
           </Body>
           <Right>
-            <Text style={styles.text1}>{product.owner.owner}</Text>
+            <Text style={styles.text1}>{product.owner.user.username}</Text>
           </Right>
         </ListItem>
       </ImageBackground>

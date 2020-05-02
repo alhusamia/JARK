@@ -47,6 +47,7 @@ class ProductDetail extends React.Component {
           <View style={styles.infoContainer}>
             <Text style={styles.infoDescription}>{product.description}</Text>
           </View>
+
           <View style={styles.Container}>
             <Text style={styles.text1}>
               Owner: {product.owner.user.username}
@@ -59,6 +60,18 @@ class ProductDetail extends React.Component {
               <Text style={styles.text}>Visit Profile</Text>
             </Button>
           </View>
+
+
+          <Button
+            style={styles.ItemContainer}
+            // hmmm...
+            onPress={() => navigation.navigate(OWNERPROFILE, { product })}
+          >
+            <Text style={styles.infoDescription}>
+              {product.owner.user.username}
+            </Text>
+          </Button>
+
           <Right>
             <Button
               style={styles.buttons}
