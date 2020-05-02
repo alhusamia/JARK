@@ -33,12 +33,15 @@ class Camera extends React.Component {
     const { hasCameraPermission, scanned } = this.state;
     const { time, data } = this.state;
     const { profile } = this.props.route.params;
-    const datanew = data.split(" \n ");
+    const datanew = data.split(",");
     const obj = {
       productId: Number(datanew[0]),
-      owner: datanew[1],
-      renter: datanew[2],
+      owner_id: Number(datanew[1]),
+      renter_id: Number(datanew[2]),
+      first_name: datanew[3],
+      last_name: datanew[4],
     };
+    console.log(typeof(obj.productId));
 
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
@@ -76,21 +79,21 @@ class Camera extends React.Component {
                 margin: 50,
                 padding: 40,
                 borderRadius: 10,
-                flex: 1,
+                // flex: 1,
               }}
             >
-              <Text>{data}</Text>
-              <TextInput
-                placeholder="Rent Duration"
-                placeholderTextColor="#A6AEC1"
-                value={time}
-                onChangeText={(time) => this.setState({ time })}
-              />
+              <Text>The Renter is :</Text>
+              <Text>
+                {obj.first_name} {obj.last_name}
+              </Text>
 
               <Button
-                title="Rent"
+                title="Accept"
                 onPress={() => {
-                  this.props.Rent({ product: Number(data) });
+                  this.props.Rent({
+                    product: obj.productId,
+                    tenant: obj.renter_id,
+                  });
                   this.setState({ show: false });
                 }}
               />
@@ -102,21 +105,19 @@ class Camera extends React.Component {
   }
 
   handleBarCodeScanned = ({ data }) => {
-    const datanew = data.split(" \n ");
+    const datanew = data.split(",");
     const obj = {
       productId: Number(datanew[0]),
-      owner: datanew[1],
-      renter: datanew[2],
+      owner_id: Number(datanew[1]),
+      renter_id: Number(datanew[2]),
     };
     {
-      this.props.route.params.profile.user.username !== obj.owner
+      this.props.route.params.profile.user.id !== obj.owner_id
         ? (this.setState({
             scanned: true,
             data: data,
           }),
-          alert(
-            `Sorry You are not the Owner\n${this.props.route.params.profile.user.username} \n ${obj.owner_id}`
-          ))
+          alert(`Sorry You are not the Owner`))
         : this.setState({
             scanned: true,
             show: true,
