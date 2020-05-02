@@ -6,14 +6,8 @@ import Icon from "react-native-vector-icons/AntDesign";
 const LogoutButton = ({ logout }) => (
   <TouchableOpacity
     style={{
-      // backgroundColor: "red",
-      height: 70,
-      width: 300,
-      marginHorizontal: 20,
-      borderRadius: 35,
       alignItems: "center",
       justifyContent: "center",
-      marginVertical: 8,
     }}
     onPress={() => logout()}
   >

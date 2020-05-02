@@ -25,22 +25,26 @@ class Profile extends Component {
 
   render() {
     const { profile, navigation, allproducts, listofrents, user } = this.props;
-    let myProduct=[]
-    if(user){
-     myProduct = allproducts
-      .filter((product) => product.owner.user.id === user.user_id)
-      .map((product) => (
-        <View style={styles.mediaImageContainer} key={product.name + product.id}>
-          <Image
-            source={{ uri: product.image }}
-            style={styles.image}
-            resizeMode="cover"
-          ></Image>
-          <Text style={[styles.text, styles.subText]}>
-            {product.owner.owner}
-          </Text>
-        </View>
-      ))}
+    let myProduct = [];
+    if (user) {
+      myProduct = allproducts
+        .filter((product) => product.owner.user.id === user.user_id)
+        .map((product) => (
+          <View
+            style={styles.mediaImageContainer}
+            key={product.name + product.id}
+          >
+            <Image
+              source={{ uri: product.image }}
+              style={styles.image}
+              resizeMode="cover"
+            ></Image>
+            <Text style={[styles.text, styles.subText]}>
+              {product.owner.owner}
+            </Text>
+          </View>
+        ));
+    }
     const myRent = listofrents.map((product) => (
       <View style={styles.mediaImageContainer} key={product.name + product.id}>
         <Image
@@ -69,9 +73,9 @@ class Profile extends Component {
             <Ionicons names="md-more" size={24} color="#52575D"></Ionicons>
           </View>
 
-          <View style={{ alignSelf: "center", marginLeft: 16 }}>
+          <View style={{ alignSelf: "center", alignItems: "center" }}>
             {!profile.user ? (
-              <Text>Welcome</Text>
+              <Text>You Should Login</Text>
             ) : (
               <>
                 <Icon
@@ -85,7 +89,6 @@ class Profile extends Component {
                 >
                   Scan Qr
                 </Text>
-                <CreateProduct />
                 <View style={styles.profileImage}>
                   <Thumbnail
                     source={require("../../assets/4.jpg")}
@@ -145,13 +148,13 @@ class Profile extends Component {
                 {
                   fontWeight: "200",
                   fontSize: 24,
-                  marginLeft: 150,
                   marginBottom: 20,
                 },
               ]}
             >
               My Products
             </Text>
+            <CreateProduct />
             <ScrollView
               horizontal={true}
               showsHorizontalScrollIndicator={false}
@@ -166,7 +169,6 @@ class Profile extends Component {
                 {
                   fontWeight: "200",
                   fontSize: 24,
-                  marginLeft: 120,
                   marginBottom: 20,
                 },
               ]}
