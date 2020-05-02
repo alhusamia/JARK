@@ -57,7 +57,35 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderWidth: 0.5,
     borderRadius: 10,
-    width: 50,
+    width: 500,
+  },
+  buttons: {
+    backgroundColor: "#25a60c",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 15,
+    width: 400,
+  },
+  buttons1: {
+    backgroundColor: "#2c1787",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 15,
+    width: 400,
+    marginBottom: 80,
+  },
+  text: {
+    color: "#ffffff",
+    fontSize: 20,
+  },
+  text1: {
+    color: "#000000",
+    fontSize: 24,
+  },
+  hairline: {
+    backgroundColor: "#A2A2A2",
+    height: 2,
+    width: 1000,
   },
 });
 

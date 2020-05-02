@@ -6,10 +6,10 @@ import {
   Image,
   TouchableHighlight,
 } from "react-native";
-import { Button, Right } from "native-base";
-
+import { Button, Right, Thumbnail } from "native-base";
+import Slideshow from "react-native-image-slider-show";
 import { connect } from "react-redux";
-
+import { StyleSheet } from "react-native";
 import styles from "./styles";
 
 import { addProductToRentList } from "../../redux/actions";
@@ -19,7 +19,6 @@ import { OWNERPROFILE } from "../../Navigation/screenNames";
 class ProductDetail extends React.Component {
   render() {
     const { product } = this.props.route.params;
-    const { ProfileID } = this.props.route.params.product.owner;
     const { addProductToRentList, navigation } = this.props;
     return (
       <ScrollView style={styles.container}>
@@ -27,17 +26,41 @@ class ProductDetail extends React.Component {
           <View>
             <TouchableHighlight>
               <View style={styles.imageContainer}>
-                <Image style={styles.image} source={{ uri: product.image }} />
+                {/* <Image style={styles.image} source={{ uri: product.image }} /> */}
+                <Slideshow
+                  dataSource={[
+                    { url: product.image },
+                    { url: product.image2 },
+                    { url: product.image3 },
+                    { url: product.image4 },
+                  ]}
+                  height={300}
+                  scrollEnabled={true}
+                />
               </View>
             </TouchableHighlight>
           </View>
         </View>
         <View style={styles.Container}>
           <Text style={styles.infoName}>{product.name}</Text>
-
+          <View style={styles.hairline}></View>
           <View style={styles.infoContainer}>
             <Text style={styles.infoDescription}>{product.description}</Text>
           </View>
+
+          <View style={styles.Container}>
+            <Text style={styles.text1}>
+              Owner: {product.owner.user.username}
+            </Text>
+            <Thumbnail source={{ uri: product.owner.image }} />
+            <Button
+              style={styles.buttons1}
+              onPress={() => navigation.navigate(OWNERPROFILE, { product })}
+            >
+              <Text style={styles.text}>Visit Profile</Text>
+            </Button>
+          </View>
+
 
           <Button
             style={styles.ItemContainer}
@@ -48,13 +71,13 @@ class ProductDetail extends React.Component {
               {product.owner.user.username}
             </Text>
           </Button>
+
           <Right>
             <Button
-              dark
-              style={styles.ItemContainer}
+              style={styles.buttons}
               onPress={() => addProductToRentList(product)}
             >
-              <Text style={{ color: "white" }}>Rent</Text>
+              <Text style={styles.text}>RENT NOW</Text>
             </Button>
           </Right>
         </View>
