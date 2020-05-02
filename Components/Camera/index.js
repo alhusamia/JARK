@@ -41,7 +41,6 @@ class Camera extends React.Component {
       first_name: datanew[3],
       last_name: datanew[4],
     };
-    console.log(typeof(obj.productId));
 
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
