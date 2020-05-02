@@ -30,14 +30,18 @@ class Camera extends React.Component {
   };
 
   render() {
-    const { hasCameraPermission, scanned } = this.state;
+    const { hasCameraPermission, scanned, user } = this.state;
     const { time, data } = this.state;
-    const datanew = data.split("\n");
+    const { profile } = this.props.route.params;
+    const datanew = data.split(" \n ");
     const obj = {
       productId: Number(datanew[0]),
       owner: datanew[1],
       renter: datanew[2],
     };
+    
+    console.log(obj);
+
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
     }
@@ -100,16 +104,39 @@ class Camera extends React.Component {
   }
 
   handleBarCodeScanned = ({ data }) => {
-    this.setState({
-      scanned: true,
-      show: true,
-      data: data,
-    });
-
+    const datanew = data.split(" \n ");
+    const obj = {
+      productId: Number(datanew[0]),
+      owner: datanew[1],
+      renter: datanew[2],
+    };
+    {
+      this.props.route.params.profile.user.username !== obj.owner
+        ? (this.setState({
+            scanned: true,
+            data: data,
+          }),
+          alert(
+            `Sorry You are not the Owner\n${this.props.route.params.profile.user.username} \n ${obj.owner_id}`
+          ))
+        : this.setState({
+            scanned: true,
+            show: true,
+            data: data,
+          });
+    }
+    // this.setState({
+    //   scanned: true,
+    //   show: true,
+    //   data: data,
+    // });
   };
 }
 
+const mapStateToProps = ({ user }) => ({
+  user,
+});
+
 const mapDispatchToProps = { Rent };
 
-export default connect(null, mapDispatchToProps)(Camera);
-// export default Camera;
+export default connect(mapStateToProps, mapDispatchToProps)(Camera);

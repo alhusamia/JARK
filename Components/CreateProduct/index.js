@@ -16,6 +16,8 @@ import * as Permissions from "expo-permissions";
 import { createProduct } from "../../redux/actions";
 import { connect } from "react-redux";
 import styles from "./styles";
+// import { Icon } from "react-native-vector-icons/Icon";
+import Icon from "react-native-vector-icons/Entypo";
 class CreateProduct extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   state = {
@@ -59,11 +61,13 @@ class CreateProduct extends Component {
     const newProduct = { name: name, description: description, image: image };
     return (
       <>
-        <Button
-          title="show model"
+        <Icon
+          name="add-to-list"
           onPress={() => {
             this.setState({ show: true });
           }}
+          size={35}
+          style={{ marginLeft: 350, marginTop: -45 }}
         />
         <Modal transparent={true} visible={this.state.show}>
           <View style={{ backgroundColor: "#000000aa", flex: 1 }}>

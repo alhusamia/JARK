@@ -44,7 +44,9 @@ class ProductDetail extends React.Component {
             // hmmm...
             onPress={() => navigation.navigate(OWNERPROFILE, { product })}
           >
-            <Text style={styles.infoDescription}>{product.owner.owner}</Text>
+            <Text style={styles.infoDescription}>
+              {product.owner.user.username}
+            </Text>
           </Button>
           <Right>
             <Button

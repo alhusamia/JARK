@@ -7,15 +7,17 @@ import Product from "../Product/Product";
 
 class AllProduct extends Component {
   render() {
-    const { navigation, allproducts } = this.props;
+    const { navigation, allproducts, user } = this.props;
 
-    const products = allproducts.map((product) => (
-      <Product
-        key={product.name + product.id}
-        product={product}
-        navigation={navigation}
-      />
-    ));
+    const products = allproducts
+      .filter((product) => product.owner.user.id !== user.user_id)
+      .map((product) => (
+        <Product
+          key={product.name + product.id}
+          product={product}
+          navigation={navigation}
+        />
+      ));
 
     return (
       <Content>
@@ -24,8 +26,9 @@ class AllProduct extends Component {
     );
   }
 }
-const mapStateToProps = ({ allproducts }) => ({
+const mapStateToProps = ({ allproducts, user }) => ({
   allproducts,
+  user,
 });
 
 export default connect(mapStateToProps)(AllProduct);

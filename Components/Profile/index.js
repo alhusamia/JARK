@@ -1,21 +1,59 @@
 import React, { Component } from "react";
 import { Text, View, Button, Thumbnail } from "native-base";
-import { StyleSheet, SafeAreaView, ScrollView, Image } from "react-native";
+import {
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { connect } from "react-redux";
+import Icon from "react-native-vector-icons/EvilIcons";
 // Components
 import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
 import { getProfile } from "../../redux/actions";
-import { RENT, CAMERA } from "../../Navigation/screenNames";
+import { RENT, CAMERA, RENTDETAIL } from "../../Navigation/screenNames";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { log } from "react-native-reanimated";
 // import styles from "../CreateProduct/styles";
 // import styles from "../CreateProduct/styles";
 class Profile extends Component {
   componentDidMount() {
     this.props.getProfile();
   }
+
   render() {
-    const { profile, navigation } = this.props;
+    const { profile, navigation, allproducts, listofrents, user } = this.props;
+    const myProduct = allproducts
+      .filter((product) => product.owner.user.id === user.user_id)
+      .map((product) => (
+        <View style={styles.mediaImageContainer}>
+          <Image
+            source={{ uri: product.image }}
+            style={styles.image}
+            resizeMode="cover"
+          ></Image>
+          <Text style={[styles.text, styles.subText]}>
+            {product.owner.owner}
+          </Text>
+        </View>
+      ));
+    const myRent = listofrents.map((product) => (
+      <View style={styles.mediaImageContainer}>
+        <Image
+          source={{ uri: product.image }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+        <Text
+          style={[styles.text, styles.subText]}
+          onPress={() => navigation.navigate(RENTDETAIL, { product, profile })}
+        >
+          {product.name}
+        </Text>
+      </View>
+    ));
 
     return (
       <SafeAreaView style={styles.container}>
@@ -78,99 +116,141 @@ class Profile extends Component {
               </>
             )}
 
-            <LogoutButton /> */}
+            */}
           </View>
-          <View style={{ alignSelf: "center" }}>
-            <View style={styles.profileImage}>
-              <Thumbnail
-                source={require("../../assets/4.jpg")}
-                style={styles.image1}
-                resizeMode="center"
-              />
-            </View>
-            {/* <View style={styles.add}>
+
+          <View style={{ alignSelf: "center", marginLeft: 16 }}>
+            {!profile.user ? (
+              <Text>Welcome</Text>
+            ) : (
+              <>
+                <Icon
+                  name="camera"
+                  onPress={() => navigation.navigate(CAMERA, { profile })}
+                  size={45}
+                  style={{ marginTop: -25, marginLeft: -5 }}
+                />
+                <Text
+                  style={[styles.text, { fontWeight: "200", fontSize: 10 }]}
+                >
+                  Scan Qr
+                </Text>
+                <CreateProduct />
+                <View style={styles.profileImage}>
+                  <Thumbnail
+                    source={require("../../assets/4.jpg")}
+                    style={styles.image1}
+                    resizeMode="center"
+                  />
+                </View>
+                {/* <View style={styles.add}>
               <Ionicons
                 name="ios-add"
                 size={48}
                 color="#DFD8C8"
-                style={{ marginTop: 6, marginLeft: 2 }}
+                style={{ marginTop: 4, marginLeft: 2 }}
+                
               ></Ionicons>
             </View> */}
-            <View style={styles.infoContainer}>
-              <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>
-                test
-              </Text>
-              <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>
-                Programmer :D
-              </Text>
-            </View>
-            <View style={styles.statsContainer}>
-              <View style={styles.statsBox}>
-                <Text
-                  style={[styles.text, { fontWeight: "200", fontSize: 24 }]}
-                >
-                  10
-                </Text>
-                <Text style={[styles.text, styles.subText]}>Products</Text>
-              </View>
-              <View
-                style={[
-                  styles.statsBox,
-                  {
-                    borderColor: "#DFD8C8",
-                    borderLeftWidth: 1,
-                    borderRightWidth: 1,
-                  },
-                ]}
-              >
-                <Text
-                  style={[styles.text, { fontWeight: "200", fontSize: 24 }]}
-                >
-                  20
-                </Text>
-                <Text style={[styles.text, styles.subText]}>
-                  Rented Products
-                </Text>
-              </View>
-            </View>
+                <View style={styles.infoContainer}>
+                  <Text
+                    style={[styles.text, { fontWeight: "200", fontSize: 36 }]}
+                  >
+                    {profile.user.first_name}
+                  </Text>
+                  <Text
+                    style={[styles.text, { fontWeight: "200", fontSize: 36 }]}
+                  >
+                    {profile.user.last_name}
+                  </Text>
+                </View>
+                <View style={styles.statsContainer}>
+                  <View style={styles.statsBox}>
+                    <Text
+                      style={[styles.text, { fontWeight: "200", fontSize: 24 }]}
+                    >
+                      {myProduct.length}
+                    </Text>
+                    <Text style={[styles.text, styles.subText]}>Products</Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.statsBox,
+                      {
+                        borderColor: "#DFD8C8",
+                        borderLeftWidth: 1,
+                        borderRightWidth: 1,
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={[styles.text, { fontWeight: "200", fontSize: 24 }]}
+                    >
+                      {myRent.length}
+                    </Text>
+                    <Text style={[styles.text, styles.subText]}>
+                      Rented Products
+                    </Text>
+                  </View>
+                </View>
+              </>
+            )}
           </View>
 
           <View style={{ marginTop: 32 }}>
+            <Text
+              style={[
+                styles.text,
+                {
+                  fontWeight: "200",
+                  fontSize: 24,
+                  marginLeft: 150,
+                  marginBottom: 20,
+                },
+              ]}
+            >
+              My Products
+            </Text>
             <ScrollView
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <View style={styles.mediaImageContainer}>
-                <Image
-                  source={require("../../assets/1.jpg")}
-                  style={styles.image}
-                  resizeMode="cover"
-                ></Image>
-              </View>
-              <View style={styles.mediaImageContainer}>
-                <Image
-                  source={require("../../assets/2.jpg")}
-                  style={styles.image}
-                  resizeMode="cover"
-                ></Image>
-              </View>
-              <View style={styles.mediaImageContainer}>
-                <Image
-                  source={require("../../assets/3.jpg")}
-                  style={styles.image}
-                  resizeMode="cover"
-                ></Image>
-              </View>
+              {myProduct}
             </ScrollView>
           </View>
+          <View style={{ marginTop: 32 }}>
+            <Text
+              style={[
+                styles.text,
+                {
+                  fontWeight: "200",
+                  fontSize: 24,
+                  marginLeft: 120,
+                  marginBottom: 20,
+                },
+              ]}
+            >
+              Rented Products
+            </Text>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            >
+              {myRent}
+            </ScrollView>
+          </View>
+          <LogoutButton />
         </ScrollView>
       </SafeAreaView>
     );
   }
 }
 
-const mapStateToProps = ({ profile }) => ({
+const mapStateToProps = ({ profile, allproducts, listofrents, user }) => ({
   profile,
+  allproducts,
+  listofrents,
+  user,
 });
 const mapDispatchToProps = { getProfile };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
