@@ -9,6 +9,7 @@ export const SIGNUP = "Signup";
 export const USER = "User";
 export const PROFILE = "Profile";
 export const MENU = "Menu";
+export const PROFILESTACK = "PROFILE";
 
 //Search
 export const SEARCH = "Search";

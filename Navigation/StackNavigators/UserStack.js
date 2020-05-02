@@ -3,29 +3,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { connect } from "react-redux";
 
 // Screens
-import {
-  LOGIN,
-  SIGNUP,
-  PROFILE,
-  RENT,
-  RENTDETAIL,
-  CAMERA,
-  OWNERPROFILE,
-} from "../screenNames";
+import { LOGIN, SIGNUP, PROFILE, PROFILESTACK } from "../screenNames";
+//Components
 import Login from "../../Components/Authentication/Login";
 import Signup from "../../Components/Authentication/Signup";
-import Profile from "../../Components/Profile";
+import ProfileStack from "./ProfileStack";
 
-import RentDetail from "../../Components/RentDetail/RentDetail";
-import Rents from "../../Components/Rent/Rents";
-
-import { createDrawerNavigator } from "@react-navigation/drawer";
-
-// const { Navigator, Screen } = createDrawerNavigator();
-
-import Camera from "../../Components/Camera";
-import CreateProduct from "../../Components/CreateProduct";
-import OwnerProfile from "../../Components/OwnerProfile";
 const { Navigator, Screen } = createStackNavigator();
 
 function UserStack({ user }) {
@@ -56,13 +39,11 @@ function UserStack({ user }) {
           />
         </>
       ) : (
-        <>
-          <Screen name={PROFILE} component={Profile} />
-          <Screen name={CAMERA} component={Camera} />
-          <Screen name={RENT} component={Rents} />
-          <Screen name={RENTDETAIL} component={RentDetail} />
-          <Screen name={OWNERPROFILE} component={OwnerProfile} />
-        </>
+        <Screen
+          name={PROFILESTACK}
+          component={ProfileStack}
+          options={{ headerShown: false }}
+        />
       )}
     </Navigator>
   );
@@ -71,4 +52,3 @@ const mapStateToProps = ({ user }) => ({
   user,
 });
 export default connect(mapStateToProps)(UserStack);
-// export default UserStack;
