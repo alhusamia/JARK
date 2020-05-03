@@ -60,16 +60,6 @@ class ProductDetail extends React.Component {
             </Button>
           </View>
 
-          <Button
-            style={styles.ItemContainer}
-            // hmmm...
-            onPress={() => navigation.navigate(OWNERPROFILE, { product })}
-          >
-            <Text style={styles.infoDescription}>
-              {product.owner.user.username}
-            </Text>
-          </Button>
-
           <Right>
             <Button
               style={styles.buttons}

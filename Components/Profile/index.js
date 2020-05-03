@@ -7,12 +7,13 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import { ListItem } from "native-base";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/EvilIcons";
 // Components
 import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
-import { getProfile } from "../../redux/actions";
+import { getProfile, addProductToRentList } from "../../redux/actions";
 import { RENT, CAMERA, RENTDETAIL } from "../../Navigation/screenNames";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { log } from "react-native-reanimated";
@@ -21,11 +22,14 @@ import { log } from "react-native-reanimated";
 class Profile extends Component {
   componentDidMount() {
     this.props.getProfile();
+    this.props.addProductToRentList();
   }
 
   render() {
     const { profile, navigation, allproducts, listofrents, user } = this.props;
+
     let myProduct = [];
+    let myRent = [];
     if (user) {
       myProduct = allproducts
         .filter((product) => product.owner.user.id === user.user_id)
@@ -45,21 +49,30 @@ class Profile extends Component {
           </View>
         ));
     }
-    const myRent = listofrents.map((product) => (
-      <View style={styles.mediaImageContainer} key={product.name + product.id}>
-        <Image
-          source={{ uri: product.image }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-        <Text
-          style={[styles.text, styles.subText]}
-          onPress={() => navigation.navigate(RENTDETAIL, { product, profile })}
-        >
-          {product.name}
-        </Text>
-      </View>
-    ));
+    if (listofrents !== undefined) {
+      myRent = listofrents[0]
+        .filter((product) => product.tenant.user.id === user.user_id)
+        .map((product) => (
+          <View
+            style={styles.mediaImageContainer}
+            key={product.product.name + product.product.id}
+          >
+            <Image
+              source={{ uri: product.product.image }}
+              style={styles.image}
+              resizeMode="cover"
+            />
+            <Text
+              style={[styles.text, styles.subText]}
+              onPress={() =>
+                navigation.navigate(RENTDETAIL, { product, profile })
+              }
+            >
+              {product.product.name}
+            </Text>
+          </View>
+        ));
+    }
 
     return (
       <SafeAreaView style={styles.container}>
@@ -195,7 +208,7 @@ const mapStateToProps = ({ profile, allproducts, listofrents, user }) => ({
   listofrents,
   user,
 });
-const mapDispatchToProps = { getProfile };
+const mapDispatchToProps = { getProfile, addProductToRentList };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 const styles = StyleSheet.create({

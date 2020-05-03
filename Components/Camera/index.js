@@ -81,9 +81,8 @@ class Camera extends React.Component {
                 // flex: 1,
               }}
             >
-              <Text>The Renter is :</Text>
               <Text>
-                {obj.first_name} {obj.last_name}
+                {obj.first_name} {obj.last_name} want to rent this item
               </Text>
 
               <Button
