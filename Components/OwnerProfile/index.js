@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
     height: 260,
     borderRadius: 150,
     borderWidth: 4,
+    marginLeft: -15,
   },
   titleBar: {
     flexDirection: "row",
