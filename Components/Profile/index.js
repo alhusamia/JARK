@@ -48,8 +48,12 @@ class Profile extends Component {
         .filter((product) => product.owner.user.id === user.user_id)
         .map((product) => (
           <TouchableOpacity
+
+            
+
             // onPress={() => navigation.navigate(HOME,{screen:PRODUCT_DETAIL})}
             key={product.name + product.id}
+
           >
             <View style={styles.mediaImageContainer}>
               <Image
@@ -85,6 +89,7 @@ class Profile extends Component {
         </TouchableOpacity>
       ));
     }
+
     if (user && listofrents === undefined) {
       myRent = listofrents[0]
         .filter((product) => product.tenant.user.id === user.user_id)
@@ -105,6 +110,7 @@ class Profile extends Component {
           </TouchableOpacity>
         ));
     }
+
 
     return (
       <SafeAreaView style={styles.container}>
@@ -139,7 +145,7 @@ class Profile extends Component {
                 </Text>
                 <View style={styles.profileImage}>
                   <Thumbnail
-                    source={require("../../assets/4.jpg")}
+                    source={{ uri: profile.avatar }}
                     style={styles.image1}
                     resizeMode="center"
                   />
