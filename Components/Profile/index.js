@@ -82,10 +82,13 @@ class Profile extends Component {
                   name="camera"
                   onPress={() => navigation.navigate(CAMERA, { profile })}
                   size={45}
-                  style={{ marginTop: -25, marginLeft: -5 }}
+                  style={{ marginTop: -25, marginLeft: -290 }}
                 />
                 <Text
-                  style={[styles.text, { fontWeight: "200", fontSize: 10 }]}
+                  style={[
+                    styles.text,
+                    { fontWeight: "200", fontSize: 10, marginLeft: -290 },
+                  ]}
                 >
                   Scan Qr
                 </Text>
@@ -239,7 +242,7 @@ const styles = StyleSheet.create({
     borderRadius: 150,
     overflow: "hidden",
     marginBottom: 30,
-    marginLeft: 100,
+    marginLeft: 20,
   },
   add: {
     backgroundColor: "#41444B",

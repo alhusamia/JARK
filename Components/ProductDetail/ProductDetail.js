@@ -20,6 +20,7 @@ class ProductDetail extends React.Component {
   render() {
     const { product } = this.props.route.params;
     const { addProductToRentList, navigation } = this.props;
+    console.log(product.image);
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
