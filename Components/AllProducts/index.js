@@ -10,7 +10,10 @@ class AllProduct extends Component {
     const { navigation, allproducts, user } = this.props;
 
     const products = allproducts
-      .filter((product) => product.owner.user.id !== user.user_id)
+      .filter(
+        (product) =>
+          product.owner.user.id !== user.user_id && product.rented_by === null
+      )
       .map((product) => (
         <Product
           key={product.name + product.id}

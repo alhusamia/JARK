@@ -7,6 +7,7 @@ import profile from "./profile";
 import listofrents from "./listofrents";
 import rent from "./rent";
 import ownerprofile from "./ownerprofile";
+import listofwaiting from "./listofwaiting";
 
 export default combineReducers({
   user,
@@ -16,4 +17,5 @@ export default combineReducers({
   listofrents,
   rent,
   ownerprofile,
+  listofwaiting,
 });
