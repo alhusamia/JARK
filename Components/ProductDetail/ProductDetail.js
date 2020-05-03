@@ -19,8 +19,7 @@ import { OWNERPROFILE } from "../../Navigation/screenNames";
 class ProductDetail extends React.Component {
   render() {
     const { product } = this.props.route.params;
-    const { addProductToRentList, navigation } = this.props;
-    console.log(product.image);
+    const { addProductToRentList, navigation,user } = this.props;
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
@@ -60,7 +59,7 @@ class ProductDetail extends React.Component {
               <Text style={styles.text}>Visit Profile</Text>
             </Button>
           </View>
-
+            {/* {product.owner.user.id !== user.user_id &&        */}
           <Right>
             <Button
               style={styles.buttons}
@@ -69,14 +68,18 @@ class ProductDetail extends React.Component {
               <Text style={styles.text}>RENT NOW</Text>
             </Button>
           </Right>
+          {/* } */}
         </View>
       </ScrollView>
     );
   }
 }
+const mapStateToProps = ({ user }) => ({
+  user,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   addProductToRentList: (product) => dispatch(addProductToRentList(product)),
   getOwnerProfile: (ProfileID) => dispatch(getOwnerProfile(ProfileID)),
 });
-export default connect(null, mapDispatchToProps)(ProductDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
