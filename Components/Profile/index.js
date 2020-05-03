@@ -48,14 +48,14 @@ class Profile extends Component {
         .filter((product) => product.owner.user.id === user.user_id)
         .map((product) => (
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate(HOME, { screen: PRODUCT_DETAIL })
-            }
+
+            
+
+            // onPress={() => navigation.navigate(HOME,{screen:PRODUCT_DETAIL})}
+            key={product.name + product.id}
+
           >
-            <View
-              style={styles.mediaImageContainer}
-              key={product.name + product.id}
-            >
+            <View style={styles.mediaImageContainer}>
               <Image
                 source={{ uri: product.image }}
                 style={styles.image}
@@ -69,11 +69,9 @@ class Profile extends Component {
       myWaiting = listofwaiting.map((product) => (
         <TouchableOpacity
           onPress={() => navigation.navigate(WAITDETAIL, { product, profile })}
+          key={product.name + product.id}
         >
-          <View
-            style={styles.mediaImageContainer}
-            key={product.name + product.id}
-          >
+          <View style={styles.mediaImageContainer}>
             <Image
               source={{ uri: product.image }}
               style={styles.image}
@@ -91,26 +89,28 @@ class Profile extends Component {
         </TouchableOpacity>
       ));
     }
-    // if (user || listofrents === undefined) {
-    // myRent = listofrents[0]
-    //   .filter((product) => product.tenant.user.id === user.user_id)
-    //   .map((product) => (
-    //     <TouchableOpacity
-    //       onPress={() => navigation.navigate(RENTDETAIL, { product, profile })}
-    //     >
-    //       <View
-    //         style={styles.mediaImageContainer}
-    //         key={product.product.name + product.product.id}
-    //       >
-    //         <Image
-    //           source={{ uri: product.product.image }}
-    //           style={styles.image}
-    //           resizeMode="cover"
-    //         />
-    //       </View>
-    //     </TouchableOpacity>
-    //   ));
-    // }
+
+    if (user && listofrents === undefined) {
+      myRent = listofrents[0]
+        .filter((product) => product.tenant.user.id === user.user_id)
+        .map((product) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(RENTDETAIL, { product, profile })
+            }
+            key={product.product.name + product.product.id}
+          >
+            <View style={styles.mediaImageContainer}>
+              <Image
+                source={{ uri: product.product.image }}
+                style={styles.image}
+                resizeMode="cover"
+              />
+            </View>
+          </TouchableOpacity>
+        ));
+    }
+
 
     return (
       <SafeAreaView style={styles.container}>
