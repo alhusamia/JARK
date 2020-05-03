@@ -48,7 +48,9 @@ class Profile extends Component {
         .filter((product) => product.owner.user.id === user.user_id)
         .map((product) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate(HOME,{screen:PRODUCT_DETAIL})}
+            onPress={() =>
+              navigation.navigate(HOME, { screen: PRODUCT_DETAIL })
+            }
           >
             <View
               style={styles.mediaImageContainer}
@@ -63,7 +65,7 @@ class Profile extends Component {
           </TouchableOpacity>
         ));
     }
-    if (user ) {
+    if (user) {
       myWaiting = listofwaiting.map((product) => (
         <TouchableOpacity
           onPress={() => navigation.navigate(WAITDETAIL, { product, profile })}
@@ -89,28 +91,26 @@ class Profile extends Component {
         </TouchableOpacity>
       ));
     }
-    if (user|| listofrents === undefined) {
-      myRent = listofrents[0]
-        .filter((product) => product.tenant.user.id === user.user_id)
-        .map((product) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate(RENTDETAIL, { product, profile })
-            }
-          >
-            <View
-              style={styles.mediaImageContainer}
-              key={product.product.name + product.product.id}
-            >
-              <Image
-                source={{ uri: product.product.image }}
-                style={styles.image}
-                resizeMode="cover"
-              />
-            </View>
-          </TouchableOpacity>
-        ));
-    }
+    // if (user || listofrents === undefined) {
+    // myRent = listofrents[0]
+    //   .filter((product) => product.tenant.user.id === user.user_id)
+    //   .map((product) => (
+    //     <TouchableOpacity
+    //       onPress={() => navigation.navigate(RENTDETAIL, { product, profile })}
+    //     >
+    //       <View
+    //         style={styles.mediaImageContainer}
+    //         key={product.product.name + product.product.id}
+    //       >
+    //         <Image
+    //           source={{ uri: product.product.image }}
+    //           style={styles.image}
+    //           resizeMode="cover"
+    //         />
+    //       </View>
+    //     </TouchableOpacity>
+    //   ));
+    // }
 
     return (
       <SafeAreaView style={styles.container}>
@@ -145,7 +145,7 @@ class Profile extends Component {
                 </Text>
                 <View style={styles.profileImage}>
                   <Thumbnail
-                    source={require("../../assets/4.jpg")}
+                    source={{ uri: profile.avatar }}
                     style={styles.image1}
                     resizeMode="center"
                   />

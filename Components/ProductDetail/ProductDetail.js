@@ -11,6 +11,7 @@ import Slideshow from "react-native-image-slider-show";
 import { connect } from "react-redux";
 import { StyleSheet } from "react-native";
 import styles from "./styles";
+import Icon from "react-native-vector-icons/Fontisto";
 
 import { addProductToRentList } from "../../redux/actions";
 import { getOwnerProfile } from "../../redux/actions";
@@ -19,7 +20,7 @@ import { OWNERPROFILE } from "../../Navigation/screenNames";
 class ProductDetail extends React.Component {
   render() {
     const { product } = this.props.route.params;
-    const { addProductToRentList, navigation,user } = this.props;
+    const { addProductToRentList, navigation, user } = this.props;
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
@@ -51,15 +52,14 @@ class ProductDetail extends React.Component {
             <Text style={styles.text1}>
               Owner: {product.owner.user.username}
             </Text>
-            <Thumbnail source={{ uri: product.owner.image }} />
-            <Button
-              style={styles.buttons1}
+            <Icon
+              name="person"
               onPress={() => navigation.navigate(OWNERPROFILE, { product })}
-            >
-              <Text style={styles.text}>Visit Profile</Text>
-            </Button>
+              size={35}
+              style={{ marginTop: -33, marginLeft: 200 }}
+            />
+            <Thumbnail source={{ uri: product.owner.image }} />
           </View>
-            {/* {product.owner.user.id !== user.user_id &&        */}
           <Right>
             <Button
               style={styles.buttons}
