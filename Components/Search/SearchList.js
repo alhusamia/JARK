@@ -40,7 +40,7 @@ class SearchList extends Component {
         placeholder=" Product Name ..."
         darkTheme
         round
-        onChangeText={(text) => this.searchFilterFunction(text)}
+        onChangeText={(text) => this.searchFilterFunction(text)} {/* arrow function not needed */}
         autoCorrect={false}
         value={this.state.value}
       />
@@ -55,7 +55,7 @@ class SearchList extends Component {
           data={this.state.data}
           renderItem={({ item }) => (
             <Product
-              key={item.name + item.id}
+              key={item.name + item.id} {/* I don't think the key here is needed. The keyExtractor below replaces it. */}
               product={item}
               navigation={navigation}
             />

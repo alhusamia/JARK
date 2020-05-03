@@ -109,6 +109,7 @@ class Camera extends React.Component {
       owner_id: Number(datanew[1]),
       renter_id: Number(datanew[2]),
     };
+    // why not just use a normal if-statement here?
     {
       this.props.route.params.profile.user.id !== obj.owner_id
         ? (this.setState({

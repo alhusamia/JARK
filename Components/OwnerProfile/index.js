@@ -9,7 +9,7 @@ import { getOwnerProfile } from "../../redux/actions";
 
 class OwnerProfile extends Component {
   componentDidMount() {
-    this.props.getOwnerProfile(this.props.route.params.product.owner.user.id);
+    this.props.getOwnerProfile(this.props.route.params.product.owner.user.id); // with all these dots it looks like a train
   }
 
   render() {

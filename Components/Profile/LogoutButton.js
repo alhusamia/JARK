@@ -9,7 +9,7 @@ const LogoutButton = ({ logout }) => (
       alignItems: "center",
       justifyContent: "center",
     }}
-    onPress={() => logout()}
+    onPress={() => logout()} {/* no need for arrow function */}
   >
     <Icon name="logout" size={45} />
   </TouchableOpacity>
