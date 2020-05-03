@@ -15,10 +15,11 @@ import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
 import { getProfile } from "../../redux/actions";
 import {
-  RENT,
+  PRODUCT_DETAIL,
   CAMERA,
   RENTDETAIL,
   WAITDETAIL,
+  HOME,
 } from "../../Navigation/screenNames";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { log } from "react-native-reanimated";
@@ -38,7 +39,6 @@ class Profile extends Component {
       user,
       listofwaiting,
     } = this.props;
-    // console.log(listofwaiting);
 
     let myProduct = [];
     let myRent = [];
@@ -47,6 +47,27 @@ class Profile extends Component {
       myProduct = allproducts
         .filter((product) => product.owner.user.id === user.user_id)
         .map((product) => (
+          <TouchableOpacity
+            onPress={() => navigation.navigate(HOME,{screen:PRODUCT_DETAIL})}
+          >
+            <View
+              style={styles.mediaImageContainer}
+              key={product.name + product.id}
+            >
+              <Image
+                source={{ uri: product.image }}
+                style={styles.image}
+                resizeMode="cover"
+              ></Image>
+            </View>
+          </TouchableOpacity>
+        ));
+    }
+    if (user ) {
+      myWaiting = listofwaiting.map((product) => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate(WAITDETAIL, { product, profile })}
+        >
           <View
             style={styles.mediaImageContainer}
             key={product.name + product.id}
@@ -56,56 +77,38 @@ class Profile extends Component {
               style={styles.image}
               resizeMode="cover"
             ></Image>
-            <Text style={[styles.text, styles.subText]}>
-              {product.owner.owner}
-            </Text>
-          </View>
-        ));
-    }
-    if (user) {
-      myWaiting = listofwaiting.map((product) => (
-        <View
-          style={styles.mediaImageContainer}
-          key={product.name + product.id}
-        >
-          <Image
-            source={{ uri: product.image }}
-            style={styles.image}
-            resizeMode="cover"
-          ></Image>
-          <Text
-            style={[styles.text, styles.subText]}
-            onPress={() =>
-              navigation.navigate(WAITDETAIL, { product, profile })
-            }
-          >
-            {product.name}
-          </Text>
-        </View>
-      ));
-    }
-    if (user) {
-      myRent = listofrents[0]
-        .filter((product) => product.tenant.user.id === user.user_id)
-        .map((product) => (
-          <View
-            style={styles.mediaImageContainer}
-            key={product.product.name + product.product.id}
-          >
-            <Image
-              source={{ uri: product.product.image }}
-              style={styles.image}
-              resizeMode="cover"
-            />
             <Text
               style={[styles.text, styles.subText]}
               onPress={() =>
-                navigation.navigate(RENTDETAIL, { product, profile })
+                navigation.navigate(WAITDETAIL, { product, profile })
               }
             >
-              {product.product.name}
+              {product.name}
             </Text>
           </View>
+        </TouchableOpacity>
+      ));
+    }
+    if (user|| listofrents === undefined) {
+      myRent = listofrents[0]
+        .filter((product) => product.tenant.user.id === user.user_id)
+        .map((product) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(RENTDETAIL, { product, profile })
+            }
+          >
+            <View
+              style={styles.mediaImageContainer}
+              key={product.product.name + product.product.id}
+            >
+              <Image
+                source={{ uri: product.product.image }}
+                style={styles.image}
+                resizeMode="cover"
+              />
+            </View>
+          </TouchableOpacity>
         ));
     }
 
