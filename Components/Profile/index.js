@@ -13,8 +13,13 @@ import Icon from "react-native-vector-icons/EvilIcons";
 // Components
 import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
-import { getProfile, addProductToRentList } from "../../redux/actions";
-import { RENT, CAMERA, RENTDETAIL } from "../../Navigation/screenNames";
+import { getProfile } from "../../redux/actions";
+import {
+  RENT,
+  CAMERA,
+  RENTDETAIL,
+  WAITDETAIL,
+} from "../../Navigation/screenNames";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { log } from "react-native-reanimated";
 // import styles from "../CreateProduct/styles";
@@ -22,14 +27,22 @@ import { log } from "react-native-reanimated";
 class Profile extends Component {
   componentDidMount() {
     this.props.getProfile();
-    this.props.addProductToRentList();
   }
 
   render() {
-    const { profile, navigation, allproducts, listofrents, user } = this.props;
+    const {
+      profile,
+      navigation,
+      allproducts,
+      listofrents,
+      user,
+      listofwaiting,
+    } = this.props;
+    // console.log(listofwaiting);
 
     let myProduct = [];
     let myRent = [];
+    let myWaiting = [];
     if (user) {
       myProduct = allproducts
         .filter((product) => product.owner.user.id === user.user_id)
@@ -49,7 +62,29 @@ class Profile extends Component {
           </View>
         ));
     }
-    if (listofrents !== undefined) {
+    if (user) {
+      myWaiting = listofwaiting.map((product) => (
+        <View
+          style={styles.mediaImageContainer}
+          key={product.name + product.id}
+        >
+          <Image
+            source={{ uri: product.image }}
+            style={styles.image}
+            resizeMode="cover"
+          ></Image>
+          <Text
+            style={[styles.text, styles.subText]}
+            onPress={() =>
+              navigation.navigate(WAITDETAIL, { product, profile })
+            }
+          >
+            {product.name}
+          </Text>
+        </View>
+      ));
+    }
+    if (user) {
       myRent = listofrents[0]
         .filter((product) => product.tenant.user.id === user.user_id)
         .map((product) => (
@@ -143,6 +178,25 @@ class Profile extends Component {
                     <Text
                       style={[styles.text, { fontWeight: "200", fontSize: 24 }]}
                     >
+                      {myWaiting.length}
+                    </Text>
+                    <Text style={[styles.text, styles.subText]}>
+                      Waiting to Accept
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.statsBox,
+                      {
+                        borderColor: "#DFD8C8",
+                        borderLeftWidth: 1,
+                        borderRightWidth: 1,
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={[styles.text, { fontWeight: "200", fontSize: 24 }]}
+                    >
                       {myRent.length}
                     </Text>
                     <Text style={[styles.text, styles.subText]}>
@@ -186,6 +240,26 @@ class Profile extends Component {
                 },
               ]}
             >
+              Waiting to Accept
+            </Text>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            >
+              {myWaiting}
+            </ScrollView>
+          </View>
+          <View style={{ marginTop: 32 }}>
+            <Text
+              style={[
+                styles.text,
+                {
+                  fontWeight: "200",
+                  fontSize: 24,
+                  marginBottom: 20,
+                },
+              ]}
+            >
               Rented Products
             </Text>
             <ScrollView
@@ -202,13 +276,20 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = ({ profile, allproducts, listofrents, user }) => ({
+const mapStateToProps = ({
   profile,
   allproducts,
   listofrents,
   user,
+  listofwaiting,
+}) => ({
+  profile,
+  allproducts,
+  listofrents,
+  user,
+  listofwaiting,
 });
-const mapDispatchToProps = { getProfile, addProductToRentList };
+const mapDispatchToProps = { getProfile };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 const styles = StyleSheet.create({

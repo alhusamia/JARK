@@ -6,3 +6,4 @@ export * from "./listofrents";
 export * from "./rent";
 export * from "./createproduct";
 export * from "./ownerprofile";
+export * from "./listofwaiting";
