@@ -21,6 +21,7 @@ class Rents extends Component {
   render() {
     const { profile } = this.props.route.params;
     const { navigation, listofrents } = this.props;
+    // maybe this should be in its own component
     const rents = listofrents.map((product) => (
       <ImageBackground
         source={{ uri: product.image }}

@@ -18,7 +18,7 @@ function RootNavigator({ user }) {
         <Screen name={USER} component={UserStack} />
       ) : (
         <>
-          <Screen name={USER} component={UserStack} />
+          <Screen name={USER} component={UserStack} /> {/* this screen is duplicated */}
           <Screen name={HOME} component={HomeStack} />
           <Screen name={SEARCHLIST} component={SearchList} />
         </>

@@ -43,17 +43,18 @@ class Profile extends Component {
     let myProduct = [];
     let myRent = [];
     let myWaiting = [];
+
+    // combine these three if-statements into one and a nested if-statement
+    // also, move all the JSX in these .map()s into their own components.
+    // I know they'll be small components, but it'll clean up this file
+    // alot.
     if (user) {
       myProduct = allproducts
         .filter((product) => product.owner.user.id === user.user_id)
         .map((product) => (
           <TouchableOpacity
-
-            
-
             // onPress={() => navigation.navigate(HOME,{screen:PRODUCT_DETAIL})}
             key={product.name + product.id}
-
           >
             <View style={styles.mediaImageContainer}>
               <Image
@@ -91,6 +92,10 @@ class Profile extends Component {
     }
 
     if (user && listofrents === undefined) {
+      // what would this do if listofrents is undefined?
+      // wait, why is this not crashing?
+      // from my understanding, this condition is probably
+      // never being met.
       myRent = listofrents[0]
         .filter((product) => product.tenant.user.id === user.user_id)
         .map((product) => (
@@ -110,7 +115,6 @@ class Profile extends Component {
           </TouchableOpacity>
         ));
     }
-
 
     return (
       <SafeAreaView style={styles.container}>
