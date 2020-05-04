@@ -4,8 +4,7 @@ import { SET_PROFILE } from "./types";
 export const getProfile = () => async (dispatch) => {
   try {
     const res = await instance.get(`profile/`);
-    const profile = res.data;
-    // console.log(profile);
+    const profile = res.data;   
     dispatch({
       type: SET_PROFILE,
       payload: profile,

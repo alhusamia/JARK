@@ -4,8 +4,7 @@ import { GET_OWNER_PROFILE } from "./types";
 export const getOwnerProfile = (ProfileID) => async (dispatch) => {
   try {
     const res = await instance.get(`profile/${ProfileID}/`);
-    const profile = res.data;
-    console.log(profile);
+    const profile = res.data;    
     dispatch({
       type: GET_OWNER_PROFILE,
       payload: profile,

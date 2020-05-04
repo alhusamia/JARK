@@ -5,7 +5,6 @@ import {
   Text,
   Body,
   Right,
-  Button,
   Content,
   List,
 } from "native-base";

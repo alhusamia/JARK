@@ -173,8 +173,7 @@ class Login extends Component {
               <Text style={{ fontSize: 20, fontWeight: "bold" }}>SIGN IN</Text>
             </Animated.View>
           </TapGestureHandler>
-          <TouchableOpacity
-            // onPress={() => navigation.replace(USER, { screen: SIGNUP })}
+          <TouchableOpacity            
             onPress={() => navigation.replace(SIGNUP)}
           >
             <Animated.View

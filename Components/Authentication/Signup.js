@@ -86,8 +86,7 @@ class Signup extends Component {
           <Text style={styles.authButtonText}>Sign up</Text>
         </TouchableOpacity>
         <Text
-          style={styles.authOther}
-          // onPress={() => navigation.replace(USER, { screen: LOGIN })}
+          style={styles.authOther}          
           onPress={() => navigation.replace(LOGIN)}
         >
           Click here to log in!

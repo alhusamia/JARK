@@ -1,6 +1,5 @@
 import instance from "./instance";
 
-// import { RENT } from "./types";
 import { getAllProducts } from "./allproducts";
 
 export const createProduct = (product) => async (dispatch) => {

@@ -76,12 +76,6 @@ class CreateProduct extends Component {
                   value={description}
                   onChangeText={(description) => this.setState({ description })}
                 />
-                {/* <Text> */}
-                {/* <Button
-                  style={styles.authTextInput}
-                  title="Choose Image"
-                  onPress={this._pickImage}
-                /> */}
                 <Button
                   onPress={this._pickImage}
                   title="Pick an image from camera roll"

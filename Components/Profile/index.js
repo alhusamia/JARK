@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, Button, Thumbnail } from "native-base";
+import { Text, View, Thumbnail } from "native-base";
 import {
   StyleSheet,
   SafeAreaView,
@@ -7,7 +7,6 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { ListItem } from "native-base";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/EvilIcons";
 // Components
@@ -21,10 +20,7 @@ import {
   WAITDETAIL,
   HOME,
 } from "../../Navigation/screenNames";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { log } from "react-native-reanimated";
-// import styles from "../CreateProduct/styles";
-// import styles from "../CreateProduct/styles";
+import { Ionicons } from "@expo/vector-icons";
 class Profile extends Component {
   componentDidMount() {
     this.props.getProfile();

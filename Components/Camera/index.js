@@ -31,8 +31,7 @@ class Camera extends React.Component {
 
   render() {
     const { hasCameraPermission, scanned } = this.state;
-    const { time, data } = this.state;
-    const { profile } = this.props.route.params;
+    const { data } = this.state;
     const datanew = data.split(",");
     const obj = {
       productId: Number(datanew[0]),
@@ -43,7 +42,6 @@ class Camera extends React.Component {
       rentedItemId: Number(datanew[5]),
     };
     console.log(obj.rentedItemId);
-    
 
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
@@ -81,7 +79,6 @@ class Camera extends React.Component {
                 margin: 50,
                 padding: 40,
                 borderRadius: 10,
-                // flex: 1,
               }}
             >
               <Text>
