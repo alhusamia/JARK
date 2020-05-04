@@ -13,3 +13,4 @@ export const ADD_PRODUCT_TO_LIST_OF_WAITING = "ADD_PRODUCT_TO_LIST_OF_WAITING";
 
 //Rent
 export const RENT = "RENT";
+export const UNRENT = "UNRENT";

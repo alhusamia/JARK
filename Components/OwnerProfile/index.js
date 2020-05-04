@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontFamily: "HelveticaNeue",
+    // fontFamily: "HelveticaNeue",
     color: "#52575D",
   },
   subText: {

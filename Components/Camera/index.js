@@ -4,7 +4,7 @@ import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 
 //action
-import { Rent } from "../../redux/actions";
+import { Rent, UNRent } from "../../redux/actions";
 import { connect } from "react-redux";
 
 import { BarCodeScanner } from "expo-barcode-scanner";
@@ -40,7 +40,10 @@ class Camera extends React.Component {
       renter_id: Number(datanew[2]),
       first_name: datanew[3],
       last_name: datanew[4],
+      rentedItemId: Number(datanew[5]),
     };
+    console.log(obj.rentedItemId);
+    
 
     if (hasCameraPermission === null) {
       return <Text> Requesting for camera permission </Text>;
@@ -84,17 +87,26 @@ class Camera extends React.Component {
               <Text>
                 {obj.first_name} {obj.last_name} want to rent this item
               </Text>
-
-              <Button
-                title="Accept"
-                onPress={() => {
-                  this.props.Rent({
-                    product: obj.productId,
-                    tenant: obj.renter_id,
-                  });
-                  this.setState({ show: false });
-                }}
-              />
+              {datanew.length === 5 ? (
+                <Button
+                  title="Accept"
+                  onPress={() => {
+                    this.props.Rent({
+                      product: obj.productId,
+                      tenant: obj.renter_id,
+                    });
+                    this.setState({ show: false });
+                  }}
+                />
+              ) : (
+                <Button
+                  title="Return"
+                  onPress={() => {
+                    this.props.UNRent(obj.rentedItemId);
+                    this.setState({ show: false });
+                  }}
+                />
+              )}
             </View>
           </View>
         </Modal>
@@ -108,6 +120,7 @@ class Camera extends React.Component {
       productId: Number(datanew[0]),
       owner_id: Number(datanew[1]),
       renter_id: Number(datanew[2]),
+      rentedItemId: Number(datanew[5]),
     };
     {
       this.props.route.params.profile.user.id !== obj.owner_id
@@ -125,6 +138,6 @@ class Camera extends React.Component {
   };
 }
 
-const mapDispatchToProps = { Rent };
+const mapDispatchToProps = { Rent, UNRent };
 
 export default connect(null, mapDispatchToProps)(Camera);

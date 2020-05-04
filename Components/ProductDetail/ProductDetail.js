@@ -18,9 +18,14 @@ import { getOwnerProfile } from "../../redux/actions";
 import { OWNERPROFILE } from "../../Navigation/screenNames";
 
 class ProductDetail extends React.Component {
+  state = {
+    show: true,
+  };
   render() {
     const { product } = this.props.route.params;
     const { addProductToRentList, navigation, user } = this.props;
+    const { show } = this.state;
+
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
@@ -28,12 +33,7 @@ class ProductDetail extends React.Component {
             <TouchableHighlight>
               <View style={styles.imageContainer}>
                 <Slideshow
-                  dataSource={[
-                    { url: product.image },
-                    { url: product.image2 },
-                    { url: product.image3 },
-                    { url: product.image4 },
-                  ]}
+                  dataSource={[{ url: product.image }]}
                   height={300}
                   scrollEnabled={true}
                 />
@@ -60,15 +60,27 @@ class ProductDetail extends React.Component {
             />
             <Thumbnail source={{ uri: product.owner.image }} />
           </View>
-          <Right>
-            <Button
-              style={styles.buttons}
-              onPress={() => addProductToRentList(product)}
-            >
-              <Text style={styles.text}>RENT NOW</Text>
-            </Button>
-          </Right>
-          {/* } */}
+          {product.owner.user.id !== user.user_id && [
+            show !== false ? (
+              <Right>
+                <Button
+                  style={styles.buttons}
+                  onPress={() => {
+                    addProductToRentList(product);
+                    this.setState({ show: false });
+                  }}
+                >
+                  <Text style={styles.text}>RENT NOW</Text>
+                </Button>
+              </Right>
+            ) : (
+              <Right>
+                <Button style={styles.buttons}>
+                  <Text style={styles.text}>Waiting to Accept.....</Text>
+                </Button>
+              </Right>
+            ),
+          ]}
         </View>
       </ScrollView>
     );

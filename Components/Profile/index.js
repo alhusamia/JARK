@@ -48,12 +48,13 @@ class Profile extends Component {
         .filter((product) => product.owner.user.id === user.user_id)
         .map((product) => (
           <TouchableOpacity
-
-            
-
-            // onPress={() => navigation.navigate(HOME,{screen:PRODUCT_DETAIL})}
+            onPress={() =>
+              navigation.navigate(HOME, {
+                screen: PRODUCT_DETAIL,
+                params: { product },
+              })
+            }
             key={product.name + product.id}
-
           >
             <View style={styles.mediaImageContainer}>
               <Image
@@ -66,33 +67,41 @@ class Profile extends Component {
         ));
     }
     if (user) {
-      myWaiting = listofwaiting.map((product) => (
-        <TouchableOpacity
-          onPress={() => navigation.navigate(WAITDETAIL, { product, profile })}
-          key={product.name + product.id}
-        >
-          <View style={styles.mediaImageContainer}>
-            <Image
-              source={{ uri: product.image }}
-              style={styles.image}
-              resizeMode="cover"
-            ></Image>
-            <Text
-              style={[styles.text, styles.subText]}
-              onPress={() =>
-                navigation.navigate(WAITDETAIL, { product, profile })
-              }
-            >
-              {product.name}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      ));
+      myWaiting = listofwaiting
+        .filter((product) => product.rented_by === null)
+        .map((product) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(WAITDETAIL, { product, profile })
+            }
+            key={product.name + product.id}
+          >
+            <View style={styles.mediaImageContainer}>
+              <Image
+                source={{ uri: product.image }}
+                style={styles.image}
+                resizeMode="cover"
+              ></Image>
+              <Text
+                style={[styles.text, styles.subText]}
+                onPress={() =>
+                  navigation.navigate(WAITDETAIL, { product, profile })
+                }
+              >
+                {product.name}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        ));
     }
 
-    if (user && listofrents === undefined) {
+    if (user && listofrents !== undefined) {
       myRent = listofrents[0]
-        .filter((product) => product.tenant.user.id === user.user_id)
+        .filter(
+          (product) =>
+            product.tenant.user.id === user.user_id &&
+            product.end_datetime === null
+        )
         .map((product) => (
           <TouchableOpacity
             onPress={() =>
@@ -110,7 +119,6 @@ class Profile extends Component {
           </TouchableOpacity>
         ));
     }
-
 
     return (
       <SafeAreaView style={styles.container}>
