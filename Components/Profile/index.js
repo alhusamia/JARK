@@ -6,13 +6,16 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Modal,
+  Button,
 } from "react-native";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/EvilIcons";
+// import Icon from "react-native-vector-icons/MaterialIcons";
 // Components
 import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
-import { getProfile } from "../../redux/actions";
+import { getProfile, Delete } from "../../redux/actions";
 import {
   PRODUCT_DETAIL,
   CAMERA,
@@ -22,6 +25,9 @@ import {
 } from "../../Navigation/screenNames";
 import { Ionicons } from "@expo/vector-icons";
 class Profile extends Component {
+  state = {
+    show: false,
+  };
   componentDidMount() {
     this.props.getProfile();
   }
@@ -43,23 +49,31 @@ class Profile extends Component {
       myProduct = allproducts
         .filter((product) => product.owner.user.id === user.user_id)
         .map((product) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate(HOME, {
-                screen: PRODUCT_DETAIL,
-                params: { product },
-              })
-            }
-            key={product.name + product.id}
-          >
-            <View style={styles.mediaImageContainer}>
-              <Image
-                source={{ uri: product.image }}
-                style={styles.image}
-                resizeMode="cover"
-              ></Image>
-            </View>
-          </TouchableOpacity>
+          <>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(HOME, {
+                  screen: PRODUCT_DETAIL,
+                  params: { product },
+                })
+              }
+              key={product.name + product.id}
+            >
+              <View style={styles.mediaImageContainer}>
+                <Icon
+                  name="trash"
+                  style={styles.removeItem}
+                  onPress={() => this.setState({ show: true })}
+                  size={35}
+                />
+                <Image
+                  source={{ uri: product.image }}
+                  style={styles.image}
+                  resizeMode="cover"
+                ></Image>
+              </View>
+            </TouchableOpacity>
+          </>
         ));
     }
     if (user) {
@@ -90,7 +104,6 @@ class Profile extends Component {
           </TouchableOpacity>
         ));
     }
-
 
     if (user && listofrents[0].length !== 0) {
       myRent = listofrents[0]
@@ -282,6 +295,34 @@ class Profile extends Component {
           </View>
           <LogoutButton />
         </ScrollView>
+        <Modal transparent={true} visible={this.state.show}>
+          <View style={{ backgroundColor: "#000000aa", flex: 1 }}>
+            <View
+              style={{
+                backgroundColor: "#ffffff",
+                margin: 50,
+                padding: 40,
+                borderRadius: 10,
+              }}
+            >
+              <Text>Are you want to Delete this item</Text>
+              <Button
+                title="Delete"
+                danger
+                onPress={() => {
+                  this.props.Delete(product.id);
+                  this.setState({ show: false });
+                }}
+              />
+              <Button
+                title="close"
+                onPress={() => {
+                  this.setState({ show: false });
+                }}
+              />
+            </View>
+          </View>
+        </Modal>
       </SafeAreaView>
     );
   }
@@ -300,7 +341,7 @@ const mapStateToProps = ({
   user,
   listofwaiting,
 });
-const mapDispatchToProps = { getProfile };
+const mapDispatchToProps = { getProfile, Delete };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 const styles = StyleSheet.create({

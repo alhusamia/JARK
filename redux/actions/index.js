@@ -8,3 +8,4 @@ export * from "./createproduct";
 export * from "./ownerprofile";
 export * from "./listofwaiting";
 export * from "./unrent";
+export * from "./delete";
