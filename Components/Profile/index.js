@@ -91,7 +91,7 @@ class Profile extends Component {
         ));
     }
 
-    if (user && listofrents !== undefined) {
+    if (user && listofrents === undefined) {
       myRent = listofrents[0]
         .filter(
           (product) =>

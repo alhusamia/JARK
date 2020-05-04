@@ -17,7 +17,7 @@ class SearchList extends Component {
           height: 1,
           width: "86%",
           backgroundColor: "#CED0CE",
-          marginLeft: "14%",
+          marginLeft: "14%",         
         }}
       />
     );
@@ -42,7 +42,7 @@ class SearchList extends Component {
         round
         onChangeText={(text) => this.searchFilterFunction(text)}
         autoCorrect={false}
-        value={this.state.value}
+        value={this.state.value}        
       />
     );
   };

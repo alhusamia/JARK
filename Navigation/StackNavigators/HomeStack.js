@@ -11,7 +11,7 @@ import { MAIN, PRODUCT_DETAIL, OWNERPROFILE } from "../screenNames";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export default function ShopStack() {
+export default function HomeStack() {
   return (
     <Navigator initialRouteName={MAIN}>
       <Screen

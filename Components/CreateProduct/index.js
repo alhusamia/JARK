@@ -205,9 +205,9 @@ class CreateProduct extends Component {
         });
       }
     } catch (e) {
-      console.log({ uploadResponse });
-      console.log({ uploadResult });
-      console.log({ e });
+      // console.log({ uploadResponse });
+      // console.log({ uploadResult });
+      // console.log({ e });
       alert("Upload failed, sorry :(");
     } finally {
       this.setState({
