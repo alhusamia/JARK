@@ -2,8 +2,7 @@ import instance from "./instance";
 import { Rentproduct } from "./listofrents";
 
 export const UNRent = (productID) => async (dispatch) => {
-  try {
-    console.log(productID);
+  try {    
 
     const res = await instance.put(`return/${productID}/`);
 

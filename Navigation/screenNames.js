@@ -24,3 +24,4 @@ export const RENT = "Rent";
 export const RENTDETAIL = "Rent Detail";
 export const WAITDETAIL = "Waiting Detail";
 export const OWNERPROFILE = "Owner Profile";
+export const TENANTPROFILE = "Tenant Profile";

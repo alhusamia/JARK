@@ -3,10 +3,11 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 // Screens
-import { USER, SEARCHLIST, HOME } from "./screenNames";
+import { USER, SEARCHLIST, HOME, SEARCH } from "./screenNames";
 import UserStack from "./StackNavigators/UserStack";
 import HomeStack from "../Navigation/StackNavigators/HomeStack";
-import SearchList from "../Components/Search/SearchList";
+import SearchStack from "../Navigation/StackNavigators/SearchStack";
+
 import { connect } from "react-redux";
 
 // const { Navigator, Screen } = createStackNavigator();
@@ -20,7 +21,7 @@ function RootNavigator({ user }) {
         <>
           <Screen name={USER} component={UserStack} />
           <Screen name={HOME} component={HomeStack} />
-          <Screen name={SEARCHLIST} component={SearchList} />
+          <Screen name={SEARCH} component={SearchStack} />
         </>
       )}
     </Navigator>
@@ -31,4 +32,3 @@ const mapStateToProps = ({ user }) => ({
   user,
 });
 export default connect(mapStateToProps)(RootNavigator);
-// export default RootNavigator;

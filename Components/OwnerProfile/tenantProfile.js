@@ -13,11 +13,12 @@ import { connect } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import { getOwnerProfile } from "../../redux/actions";
 
+//Screen
 import { HOME, PRODUCT_DETAIL } from "../../Navigation/screenNames";
 
 class OwnerProfile extends Component {
   componentDidMount() {
-    this.props.getOwnerProfile(this.props.route.params.product.owner.user.id);
+    this.props.getOwnerProfile(this.props.route.params.named.tenant.user.id);
   }
 
   render() {
@@ -29,7 +30,7 @@ class OwnerProfile extends Component {
         .filter(
           (product) =>
             product.owner.user.id ===
-            this.props.route.params.product.owner.user.id
+            this.props.route.params.named.tenant.user.id
         )
         .map((product) => (
           <TouchableOpacity

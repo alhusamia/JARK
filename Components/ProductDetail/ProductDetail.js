@@ -7,7 +7,6 @@ import {
   TouchableHighlight,
 } from "react-native";
 import { Button, Right, Thumbnail } from "native-base";
-import Slideshow from "react-native-image-slider-show";
 import { connect } from "react-redux";
 import { StyleSheet } from "react-native";
 import styles from "./styles";
@@ -15,7 +14,7 @@ import Icon from "react-native-vector-icons/Fontisto";
 
 import { addProductToRentList } from "../../redux/actions";
 import { getOwnerProfile } from "../../redux/actions";
-import { OWNERPROFILE } from "../../Navigation/screenNames";
+import { OWNERPROFILE, TENANTPROFILE } from "../../Navigation/screenNames";
 
 class ProductDetail extends React.Component {
   state = {
@@ -23,20 +22,20 @@ class ProductDetail extends React.Component {
   };
   render() {
     const { product } = this.props.route.params;
-    const { addProductToRentList, navigation, user } = this.props;
+    const { addProductToRentList, navigation, user, listofrents } = this.props;
     const { show } = this.state;
 
+    const named = listofrents[0].find(
+      (products) => products.tenant.user.id === product.rented_by
+    );     
+      
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
           <View>
             <TouchableHighlight>
               <View style={styles.imageContainer}>
-                <Slideshow
-                  dataSource={[{ url: product.image }]}
-                  height={300}
-                  scrollEnabled={true}
-                />
+                <Image style={styles.image} source={{ uri: product.image }} />
               </View>
             </TouchableHighlight>
           </View>
@@ -47,19 +46,39 @@ class ProductDetail extends React.Component {
           <View style={styles.infoContainer}>
             <Text style={styles.infoDescription}>{product.description}</Text>
           </View>
-
-          <View style={styles.Container}>
-            <Text style={styles.text1}>
-              Owner: {product.owner.user.username}
-            </Text>
-            <Icon
-              name="person"
-              onPress={() => navigation.navigate(OWNERPROFILE, { product })}
-              size={35}
-              style={{ marginTop: -33, marginLeft: 200 }}
-            />
-            <Thumbnail source={{ uri: product.owner.image }} />
-          </View>
+          {product.owner.user.id === user.user_id ? (
+            [
+              product.rented_by && (
+                <View style={styles.Container}>
+                  <Text style={styles.text1}>
+                    Tenant: {named.tenant.user.first_name}
+                  </Text>
+                  <Icon
+                    name="person"
+                    size={35}
+                    onPress={() =>
+                      navigation.navigate(TENANTPROFILE, { named })
+                    }
+                    style={{ marginTop: -33, marginLeft: 200 }}
+                  />
+                  <Thumbnail source={{ uri: product.owner.image }} />
+                </View>
+              ),
+            ]
+          ) : (
+            <View style={styles.Container}>
+              <Text style={styles.text1}>
+                Owner: {product.owner.user.username}
+              </Text>
+              <Icon
+                name="person"
+                onPress={() => navigation.navigate(OWNERPROFILE, { product })}
+                size={35}
+                style={{ marginTop: -33, marginLeft: 200 }}
+              />
+              <Thumbnail source={{ uri: product.owner.image }} />
+            </View>
+          )}
           {product.owner.user.id !== user.user_id && [
             show !== false ? (
               <Right>
@@ -86,8 +105,9 @@ class ProductDetail extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, listofrents }) => ({
   user,
+  listofrents,
 });
 
 const mapDispatchToProps = (dispatch) => ({
