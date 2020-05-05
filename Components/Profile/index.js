@@ -73,11 +73,9 @@ class Profile extends Component {
                       product_name: product.name,
                     })
                   }
-<<<<<<< HEAD
+
                   size={25}
-=======
-                  size={35}
->>>>>>> 09824a61e1de45cab2fd962fec9c19a7b4abbd6a
+
                 />
                 <Image
                   source={{ uri: product.image }}
@@ -318,13 +316,10 @@ class Profile extends Component {
                 borderRadius: 10,
               }}
             >
-<<<<<<< HEAD
-              <Text>
-                Are you want to Delete this item {this.state.product_name}
-              </Text>
-=======
+
+
               <Text>Do you want to Delete ( {this.state.product_name} ) </Text>
->>>>>>> 09824a61e1de45cab2fd962fec9c19a7b4abbd6a
+
               <Button
                 title="Delete"
                 danger
