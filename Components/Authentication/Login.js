@@ -153,7 +153,7 @@ class Login extends Component {
               <Circle r={height + 50} cx={width / 2} />
             </ClipPath>
             <Image
-              href={require("../../assets/bb.jpg")}
+              href={require("../../assets/dd.jpg")}
               height={height + 50}
               width={width}
               preserveAspectRatio="xMidYMid slice"
@@ -173,19 +173,17 @@ class Login extends Component {
               <Text style={{ fontSize: 20, fontWeight: "bold" }}>SIGN IN</Text>
             </Animated.View>
           </TapGestureHandler>
-          <TouchableOpacity            
-            onPress={() => navigation.replace(SIGNUP)}
-          >
+          <TouchableOpacity onPress={() => navigation.replace(SIGNUP)}>
             <Animated.View
               style={{
                 ...styles.button,
-                backgroundColor: "#2E71DC",
+                backgroundColor: "#06dae4",                
                 opacity: this.buttonOpacity,
                 transform: [{ translateY: this.buttonY }],
               }}
             >
               <Text
-                style={{ fontSize: 20, fontWeight: "bold", color: "white" }}
+                style={{ fontSize: 20, fontWeight: "bold", color: "black" }}
               >
                 SIGN UP
               </Text>
