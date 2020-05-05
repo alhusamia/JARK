@@ -34,14 +34,7 @@ class Signup extends Component {
               <Text key={error}>{error}</Text>
             ))}
           </View>
-        )}
-        {/* <TextInput
-              placeholder="UserName"
-              style={styles.TextInput}
-              placeholderTextColor="black"
-              value={username}
-              onChangeText={(username) => this.setState({ username })}
-            /> */}
+        )}       
         <TextInput
           style={styles.TextInput}
           placeholder="First Name"

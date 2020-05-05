@@ -13,7 +13,18 @@ const { Navigator, Screen } = createStackNavigator();
 
 export default function HomeStack() {
   return (
-    <Navigator initialRouteName={MAIN}>
+    <Navigator
+      initialRouteName={MAIN}
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#5dbcd2",
+        },
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+        headerTintColor: "white",
+      }}
+    >
       <Screen
         name={MAIN}
         component={Home}
