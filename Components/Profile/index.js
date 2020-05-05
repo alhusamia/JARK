@@ -27,6 +27,8 @@ import { Ionicons } from "@expo/vector-icons";
 class Profile extends Component {
   state = {
     show: false,
+    product: "",
+    product_name: "",
   };
   componentDidMount() {
     this.props.getProfile();
@@ -45,6 +47,7 @@ class Profile extends Component {
     let myProduct = [];
     let myRent = [];
     let myWaiting = [];
+
     if (user) {
       myProduct = allproducts
         .filter((product) => product.owner.user.id === user.user_id)
@@ -61,10 +64,16 @@ class Profile extends Component {
             >
               <View style={styles.mediaImageContainer}>
                 <Icon
-                  name="trash"
+                  name="close"
                   style={styles.removeItem}
-                  onPress={() => this.setState({ show: true })}
-                  size={35}
+                  onPress={() =>
+                    this.setState({
+                      show: true,
+                      product: product.id,
+                      product_name: product.name,
+                    })
+                  }
+                  size={25}
                 />
                 <Image
                   source={{ uri: product.image }}
@@ -105,7 +114,7 @@ class Profile extends Component {
         ));
     }
 
-    if (user && listofrents[0].length !== 0) {
+    if (user && listofrents.length !== 0 && listofrents[0].length !== 0) {
       myRent = listofrents[0]
         .filter(
           (product) =>
@@ -305,12 +314,14 @@ class Profile extends Component {
                 borderRadius: 10,
               }}
             >
-              <Text>Are you want to Delete this item</Text>
+              <Text>
+                Are you want to Delete this item {this.state.product_name}
+              </Text>
               <Button
                 title="Delete"
                 danger
                 onPress={() => {
-                  this.props.Delete(product.id);
+                  this.props.Delete(this.state.product);
                   this.setState({ show: false });
                 }}
               />
@@ -365,6 +376,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: undefined,
     height: undefined,
+  },
+  removeItem: {
+    marginLeft: 160,
   },
   image1: {
     flex: 1,

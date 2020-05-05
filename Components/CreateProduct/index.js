@@ -40,7 +40,7 @@ class CreateProduct extends Component {
             this.setState({ show: true });
           }}
           size={35}
-          style={{ marginLeft: 350, marginTop: -45 }}
+          style={{ marginLeft: 330, marginTop: -45 }}
         />
         <Modal transparent={true} visible={this.state.show}>
           <View style={{ backgroundColor: "#000000aa", flex: 1 }}>
@@ -50,8 +50,10 @@ class CreateProduct extends Component {
                 margin: 50,
                 padding: 40,
                 borderRadius: 10,
-                marginTop: 200,
-                height: 400,
+                marginTop: 100,
+                height: 550,
+                width: 350,
+                marginLeft: 10,
               }}
             >
               <Text>Add your product</Text>
@@ -83,8 +85,8 @@ class CreateProduct extends Component {
 
                 <Button onPress={this._takePhoto} title="Take a photo" />
               </View>
-              {/* {this._maybeRenderImage()} */}
-              {/* {this._maybeRenderUploadingOverlay()} */}
+              {this._maybeRenderImage()}
+              {this._maybeRenderUploadingOverlay()}
               <Button
                 title="hide modal"
                 onPress={() => {
