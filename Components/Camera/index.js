@@ -81,28 +81,35 @@ class Camera extends React.Component {
                 borderRadius: 10,
               }}
             >
-              <Text>
-                {obj.first_name} {obj.last_name} want to rent this item
-              </Text>
               {datanew.length === 5 ? (
-                <Button
-                  title="Accept"
-                  onPress={() => {
-                    this.props.Rent({
-                      product: obj.productId,
-                      tenant: obj.renter_id,
-                    });
-                    this.setState({ show: false });
-                  }}
-                />
+                <>
+                  <Text>
+                    {obj.first_name} {obj.last_name} want to rent this item
+                  </Text>
+                  <Button
+                    title="Accept"
+                    onPress={() => {
+                      this.props.Rent({
+                        product: obj.productId,
+                        tenant: obj.renter_id,
+                      });
+                      this.setState({ show: false });
+                    }}
+                  />
+                </>
               ) : (
-                <Button
-                  title="Return"
-                  onPress={() => {
-                    this.props.UNRent(obj.rentedItemId);
-                    this.setState({ show: false });
-                  }}
-                />
+                <>
+                  <Text>
+                    {obj.first_name} {obj.last_name} want to return this item
+                  </Text>
+                  <Button
+                    title="Return"
+                    onPress={() => {
+                      this.props.UNRent(obj.rentedItemId);
+                      this.setState({ show: false });
+                    }}
+                  />
+                </>
               )}
             </View>
           </View>

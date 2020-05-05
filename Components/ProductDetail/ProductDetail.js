@@ -32,11 +32,7 @@ class ProductDetail extends React.Component {
           <View>
             <TouchableHighlight>
               <View style={styles.imageContainer}>
-                <Slideshow
-                  dataSource={[{ url: product.image }]}
-                  height={300}
-                  scrollEnabled={true}
-                />
+                <Image style={styles.image} source={{ uri: product.image }} />
               </View>
             </TouchableHighlight>
           </View>
