@@ -17,12 +17,12 @@ function UserStack({ user }) {
       initialRouteName={!user ? { LOGIN } : { PROFILE }}
       screenOptions={{
         headerStyle: {
-          backgroundColor: "white",
+          backgroundColor: "#5dbcd2",
         },
         headerTitleStyle: {
           fontWeight: "bold",
         },
-        headerTintColor: "black",
+        headerTintColor: "white",
       }}
     >
       {!user ? (

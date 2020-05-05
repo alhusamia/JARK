@@ -22,7 +22,17 @@ const { Navigator, Screen } = createStackNavigator();
 
 function ProfileStack() {
   return (
-    <Navigator>
+    <Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#5dbcd2",
+        },
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+        headerTintColor: "white",
+      }}
+    >
       <Screen name={PROFILE} component={Profile} />
       <Screen name={CAMERA} component={Camera} />
       <Screen name={RENT} component={Rents} />

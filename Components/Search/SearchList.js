@@ -38,7 +38,7 @@ class SearchList extends Component {
     return (
       <SearchBar
         placeholder=" Product Name ..."
-        darkTheme
+       lightTheme       
         round
         onChangeText={(text) => this.searchFilterFunction(text)}
         autoCorrect={false}

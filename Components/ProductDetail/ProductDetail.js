@@ -102,7 +102,7 @@ class ProductDetail extends React.Component {
           ]}
         </View>
       </ScrollView>
-    );
+    ); 
   }
 }
 const mapStateToProps = ({ user, listofrents }) => ({
