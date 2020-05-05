@@ -64,7 +64,7 @@ class Profile extends Component {
             >
               <View style={styles.mediaImageContainer}>
                 <Icon
-                  name="trash"
+                  name="close"
                   style={styles.removeItem}
                   onPress={() =>
                     this.setState({
@@ -73,7 +73,9 @@ class Profile extends Component {
                       product_name: product.name,
                     })
                   }
-                  size={35}
+
+                  size={25}
+
                 />
                 <Image
                   source={{ uri: product.image }}
@@ -314,7 +316,10 @@ class Profile extends Component {
                 borderRadius: 10,
               }}
             >
+
+
               <Text>Do you want to Delete ( {this.state.product_name} ) </Text>
+
               <Button
                 title="Delete"
                 danger
@@ -374,6 +379,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: undefined,
     height: undefined,
+  },
+  removeItem: {
+    marginLeft: 160,
   },
   image1: {
     flex: 1,

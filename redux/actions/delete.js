@@ -4,10 +4,17 @@ import { getAllProducts } from "./allproducts";
 export const Delete = (productID) => async (dispatch) => {
   try {
     const res = await instance.delete(`delete/${productID}/`);
-
     const product = res.data;
     dispatch(getAllProducts());
   } catch (err) {
-    console.error("Error while Deleting", err);
+    console.error(err);
   }
+  // try {
+  //   const res = await instance.delete(`delete/${productID}/`);
+
+  //   const product = res.data;
+  //   dispatch(getAllProducts());
+  // } catch (err) {
+  //   console.error("Error while Deleting", err);
+  // }
 };
