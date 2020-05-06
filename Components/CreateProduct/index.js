@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { View, Text } from "native-base";
+import { View, Text, Button } from "native-base";
 import {
   ActivityIndicator,
-  Button,
+  // Button,
   Clipboard,
   Image,
   Share,
@@ -18,6 +18,11 @@ import * as ImagePicker from "expo-image-picker";
 import { createProduct } from "../../redux/actions";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/Entypo";
+import IconNN from "react-native-vector-icons/AntDesign";
+import Icon3 from "react-native-vector-icons/SimpleLineIcons";
+import Icon4 from "react-native-vector-icons/MaterialIcons";
+import { block } from "react-native-reanimated";
+
 class CreateProduct extends Component {
   state = {
     image: null,
@@ -41,7 +46,11 @@ class CreateProduct extends Component {
           size={35}
           style={{ marginLeft: 330, marginTop: -45 }}
         />
-        <Modal transparent={true} visible={this.state.show} animationType="fade">
+        <Modal
+          transparent={true}
+          visible={this.state.show}
+          animationType="slide"
+        >
           <View
             style={{
               backgroundColor: "#000000aa",
@@ -55,12 +64,29 @@ class CreateProduct extends Component {
                 margin: 50,
                 padding: 40,
                 borderRadius: 10,
-                marginTop: 100,
-                height: 550,
+                marginTop: 200,
+                height: 350,
                 width: 350,
               }}
             >
-              <Text>Add your product</Text>
+              <IconNN
+                name="closecircleo"
+                size={30}
+                style={{ marginLeft: 240, marginTop: -20 }}
+                onPress={() => {
+                  this.setState({ show: false });
+                }}
+              />
+              <Text
+                style={{
+                  marginTop: -30,
+                  marginBottom: 20,
+                  fontSize: 20,
+                  color: "#048c94",
+                }}
+              >
+                Add your product
+              </Text>
               <View
                 style={{
                   flex: 1,
@@ -71,39 +97,50 @@ class CreateProduct extends Component {
                 <TextInput
                   style={styles.TextInput}
                   placeholder="Product Name"
-                  placeholderTextColor="black"
+                  placeholderTextColor="#048c94"
                   value={name}
                   onChangeText={(name) => this.setState({ name })}
                 />
                 <TextInput
-                  style={styles.authTextInput}
+                  style={styles.TextInput}
                   placeholder="Description"
-                  placeholderTextColor="#A6AEC1"
+                  placeholderTextColor="#048c94"
                   value={description}
                   onChangeText={(description) => this.setState({ description })}
                 />
-                <Button
-                  onPress={this._pickImage}
-                  title="Pick an image from camera roll"
-                />                
 
-                <Button onPress={this._takePhoto} title="Take a photo" />
+                <Button style={styles.button1} onPress={this._pickImage}>
+                  <Text style={{ marginLeft: -10, color: "#048c94" }}>
+                    Pick an image from camera roll
+                  </Text>
+                  <Icon3
+                    name="camera"
+                    onPress={this._takePhoto}
+                    size={25}
+                    style={{ marginRight: 50 }}
+                  />
+                </Button>
+
+                {this._maybeRenderImage()}
+                {this._maybeRenderUploadingOverlay()}
+                <Button
+                  style={styles.button2}
+                  onPress={() => {
+                    this.props.createProduct(newProduct);
+                    this.setState({ show: false });
+                  }}
+                >
+                  <Text style={{ color: "white" }}>ADD</Text>
+                  <Icon4 name="add" size={25} style={{ marginRight: 50 }} />
+                </Button>
+                {/* <Button
+                  title="Add"
+                  onPress={() => {
+                    this.props.createProduct(newProduct);
+                    this.setState({ show: false });
+                  }}
+                /> */}
               </View>
-              {this._maybeRenderImage()}
-              {this._maybeRenderUploadingOverlay()}
-              <Button
-                title="hide modal"
-                onPress={() => {
-                  this.setState({ show: false });
-                }}
-              />
-              <Button
-                title="Add"
-                onPress={() => {
-                  this.props.createProduct(newProduct);
-                  this.setState({ show: false });
-                }}
-              />
             </View>
           </View>
         </Modal>
@@ -130,17 +167,17 @@ class CreateProduct extends Component {
 
     return (
       <View style={styles.maybeRenderContainer}>
-        <View style={styles.maybeRenderImageContainer}>
+        {/* <View style={styles.maybeRenderImageContainer}>
           <Image source={{ uri: image }} style={styles.maybeRenderImage} />
-        </View>
+        </View> */}
 
-        <Text
+        {/* <Text
           onPress={this._copyToClipboard}
           onLongPress={this._share}
           style={styles.maybeRenderImageText}
         >
           {image}
-        </Text>
+        </Text> */}
       </View>
     );
   };
@@ -292,13 +329,48 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 3,
     borderTopRightRadius: 3,
     overflow: "hidden",
+    alignItems: "center",
   },
   maybeRenderImage: {
-    height: 250,
-    width: 250,
+    height: 200,
+    width: 200,
   },
   maybeRenderImageText: {
     paddingHorizontal: 10,
     paddingVertical: 10,
+  },
+  TextInput: {
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 0.5,
+    marginHorizontal: 20,
+    paddingLeft: 10,
+    marginVertical: 5,
+    borderColor: "#048c94",
+    width: 300,
+  },
+  button1: {
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 0.5,
+    marginHorizontal: 20,
+    paddingLeft: 10,
+    marginVertical: 5,
+    borderColor: "#048c94",
+    width: 300,
+    backgroundColor: "white",
+    // marginBottom: 20,
+  },
+  button2: {
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 0.5,
+    marginHorizontal: 20,
+    paddingLeft: 10,
+    marginVertical: 5,
+    borderColor: "#048c94",
+    width: 120,
+    backgroundColor: "#048c94",
+    // marginBottom: -30,
   },
 });

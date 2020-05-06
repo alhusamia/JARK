@@ -1,4 +1,4 @@
-import { createSharedElementStackNavigator } from "react-navigation-shared-element";
+// import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 
 import { MAIN, PRODUCT_DETAIL } from "../screenNames";
 
