@@ -311,6 +311,7 @@ class Profile extends Component {
                 margin: 50,
                 padding: 40,
                 borderRadius: 10,
+                marginTop: 300,
               }}
             >
               <Text>Do you want to Delete ( {this.state.product_name} ) </Text>

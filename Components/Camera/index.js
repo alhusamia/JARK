@@ -78,6 +78,7 @@ class Camera extends React.Component {
                 margin: 50,
                 padding: 40,
                 borderRadius: 10,
+                marginTop: 300,
               }}
             >
               {datanew.length === 5 ? (
