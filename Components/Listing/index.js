@@ -27,6 +27,7 @@ class App extends Component {
     this.setState({ selectedTab: tabIndex });
   };
 
+  // should probably move this definition to inside the render() method.
   transition = (
     <Transition.Together>
       <Transition.In

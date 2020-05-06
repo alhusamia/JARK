@@ -23,6 +23,11 @@ import {
   HOME,
 } from "../../Navigation/screenNames";
 import { Ionicons } from "@expo/vector-icons";
+
+/**
+ * This single component is MASSIVE, should absolutely be broken down into smaller components.
+ */
+
 class Profile extends Component {
   state = {
     show: false,

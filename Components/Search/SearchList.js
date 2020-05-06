@@ -40,7 +40,7 @@ class SearchList extends Component {
         placeholder=" Product Name ..."
        lightTheme       
         round
-        onChangeText={(text) => this.searchFilterFunction(text)}
+        onChangeText={(text) => this.searchFilterFunction(text)} {/* arrow function not necessary */}
         autoCorrect={false}
         value={this.state.value}        
       />

@@ -29,7 +29,7 @@ class OwnerProfile extends Component {
         .filter(
           (product) =>
             product.owner.user.id ===
-            this.props.route.params.product.owner.user.id
+            this.props.route.params.product.owner.user.id // choo choooooooo
         )
         .map((product) => (
           <TouchableOpacity
