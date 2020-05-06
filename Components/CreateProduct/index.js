@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { View, Text } from "native-base";
 import {
   ActivityIndicator,
   Button,
@@ -7,9 +8,7 @@ import {
   Share,
   StatusBar,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
   Modal,
   TextInput,
 } from "react-native";
@@ -42,8 +41,14 @@ class CreateProduct extends Component {
           size={35}
           style={{ marginLeft: 330, marginTop: -45 }}
         />
-        <Modal transparent={true} visible={this.state.show}>
-          <View style={{ backgroundColor: "#000000aa", flex: 1 }}>
+        <Modal transparent={true} visible={this.state.show} animationType="fade">
+          <View
+            style={{
+              backgroundColor: "#000000aa",
+              flex: 1,
+              alignItems: "center",
+            }}
+          >
             <View
               style={{
                 backgroundColor: "#ffffff",
@@ -53,7 +58,6 @@ class CreateProduct extends Component {
                 marginTop: 100,
                 height: 550,
                 width: 350,
-                marginLeft: 10,
               }}
             >
               <Text>Add your product</Text>
@@ -65,9 +69,9 @@ class CreateProduct extends Component {
                 }}
               >
                 <TextInput
-                  style={styles.authTextInput}
+                  style={styles.TextInput}
                   placeholder="Product Name"
-                  placeholderTextColor="#A6AEC1"
+                  placeholderTextColor="black"
                   value={name}
                   onChangeText={(name) => this.setState({ name })}
                 />
@@ -81,7 +85,7 @@ class CreateProduct extends Component {
                 <Button
                   onPress={this._pickImage}
                   title="Pick an image from camera roll"
-                />
+                />                
 
                 <Button onPress={this._takePhoto} title="Take a photo" />
               </View>

@@ -52,6 +52,29 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 16,
   },
+  TextInput: {
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 0.5,
+    marginHorizontal: 20,
+    paddingLeft: 10,
+    marginVertical: 5,
+    borderColor: "rgba(0,0,0,0.2)",
+    width: 300,
+  },
+  button: {
+    backgroundColor: "#06dae4",
+    height: 70,
+    width: 150,
+    marginHorizontal: 20,
+    borderRadius: 35,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 5,
+    shadowOffset: { width: 2, height: 2 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+  },
 });
 
 export default styles;

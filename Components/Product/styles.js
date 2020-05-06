@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     right: 0,
+    borderRadius: 10,
+    marginBottom: 20,
 
     opacity: 0.5,
     backgroundColor: "black",
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
   background: {
     width: null,
     flex: 1,
+    margin: 10,
   },
 });
 export default styles;

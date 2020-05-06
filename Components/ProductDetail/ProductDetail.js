@@ -6,7 +6,7 @@ import {
   Image,
   TouchableHighlight,
 } from "react-native";
-import { Button, Right, Thumbnail } from "native-base";
+import { Button, Right, Thumbnail, Left } from "native-base";
 import { connect } from "react-redux";
 import { StyleSheet } from "react-native";
 import styles from "./styles";
@@ -27,8 +27,8 @@ class ProductDetail extends React.Component {
 
     const named = listofrents[0].find(
       (products) => products.tenant.user.id === product.rented_by
-    );     
-      
+    );
+
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
@@ -66,15 +66,16 @@ class ProductDetail extends React.Component {
               ),
             ]
           ) : (
-            <View style={styles.Container}>
-              <Text style={styles.text1}>
-                Owner: {product.owner.user.username}
+            <View style={styles.Container1}>
+              <Text style={styles.text2}>
+                Owner: {product.owner.user.first_name}{" "}
+                {product.owner.user.last_name}
               </Text>
               <Icon
                 name="person"
                 onPress={() => navigation.navigate(OWNERPROFILE, { product })}
                 size={35}
-                style={{ marginTop: -33, marginLeft: 200 }}
+                style={{ marginTop: -33, marginLeft: 250 }}
               />
               <Thumbnail source={{ uri: product.owner.image }} />
             </View>
@@ -102,7 +103,7 @@ class ProductDetail extends React.Component {
           ]}
         </View>
       </ScrollView>
-    ); 
+    );
   }
 }
 const mapStateToProps = ({ user, listofrents }) => ({

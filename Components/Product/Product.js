@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ImageBackground, View } from "react-native";
-import { ListItem, Text, Body, Right, Button } from "native-base";
+import { ListItem, Text, Right, Left } from "native-base";
 
 // Screens
 import { PRODUCT_DETAIL } from "../../Navigation/screenNames";
@@ -23,9 +23,9 @@ class Product extends Component {
           style={styles.listitem}
           onPress={() => navigation.navigate(PRODUCT_DETAIL, { product })}
         >
-          <Body>
+          <Left>
             <Text style={styles.text}>{product.name}</Text>
-          </Body>
+          </Left>
           <Right>
             <Text style={styles.text1}>{product.owner.user.username}</Text>
           </Right>
