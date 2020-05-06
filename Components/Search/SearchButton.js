@@ -3,7 +3,7 @@ import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 
 // Screen Names
-import { SEARCHLIST } from "../../Navigation/screenNames";
+import { SEARCHLIST, SEARCH } from "../../Navigation/screenNames";
 
 const SearchButton = ({ navigation }) => {
   return (
@@ -11,7 +11,8 @@ const SearchButton = ({ navigation }) => {
       <Icon
         name="ios-search"
         size={25}
-        onPress={() => navigation.navigate(SEARCHLIST)}
+        style={{ marginRight: 15 }}
+        onPress={() => navigation.navigate(SEARCH, { screen: SEARCHLIST })}
       />
     </>
   );

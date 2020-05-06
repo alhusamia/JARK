@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/EvilIcons";
-// import Icon from "react-native-vector-icons/MaterialIcons";
 // Components
 import LogoutButton from "./LogoutButton";
 import CreateProduct from "../CreateProduct";
@@ -63,8 +62,8 @@ class Profile extends Component {
               key={product.name + product.id}
             >
               <View style={styles.mediaImageContainer}>
-                <Icon
-                  name="close"
+                <Ionicons
+                  name="ios-backspace"
                   style={styles.removeItem}
                   onPress={() =>
                     this.setState({
@@ -73,9 +72,7 @@ class Profile extends Component {
                       product_name: product.name,
                     })
                   }
-
                   size={25}
-
                 />
                 <Image
                   source={{ uri: product.image }}
@@ -316,8 +313,6 @@ class Profile extends Component {
                 borderRadius: 10,
               }}
             >
-
-
               <Text>Do you want to Delete ( {this.state.product_name} ) </Text>
 
               <Button

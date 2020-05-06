@@ -30,6 +30,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  Container1: {
+    flex: 1,
+    margin: 25,
+    marginTop: 20,
+    justifyContent: "center",
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    paddingTop: 30,
+
+    // alignItems: "center",
+  },
   infoContainer: {
     flex: 1,
     flexDirection: "row",
@@ -60,7 +72,7 @@ const styles = StyleSheet.create({
     width: 500,
   },
   buttons: {
-    backgroundColor: "#5dbcd2", 
+    backgroundColor: "#5dbcd2",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
@@ -81,6 +93,11 @@ const styles = StyleSheet.create({
   text1: {
     color: "#000000",
     fontSize: 24,
+  },
+  text2: {
+    color: "#000000",
+    fontSize: 24,
+    marginLeft: -25,
   },
   hairline: {
     backgroundColor: "#A2A2A2",

@@ -1,7 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from "../../Components/AllProducts";
+// import Home from "../../Components/AllProducts";
+import Home from "../../Components/Listing";
 import SearchButton from "../../Components/Search/SearchButton";
 import ProductDetail from "../../Components/ProductDetail/ProductDetail";
 import OwnerProfile from "../../Components/OwnerProfile";
@@ -31,6 +32,7 @@ export default function HomeStack() {
         options={({ navigation }) => ({
           headerRight: () => <SearchButton navigation={navigation} />,
         })}
+        // options={{ headerShown: false }}
       />
 
       <Screen
