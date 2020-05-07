@@ -9,7 +9,7 @@ import {
 import QRCode from "react-native-qrcode-generator";
 
 import styles from "./styles";
- 
+
 class RentDetail extends React.Component {
   state = {
     data: `${this.props.route.params.product.product.id},${this.props.route.params.product.product.owner.user.id},${this.props.route.params.profile.user.id},${this.props.route.params.profile.user.first_name},${this.props.route.params.profile.user.last_name},${this.props.route.params.product.id} `,
@@ -41,7 +41,7 @@ class RentDetail extends React.Component {
             </Text>
           </View>
           <Text style={styles.infoDescription}>
-            The Owner is :{product.product.owner.user.username}
+            Owner: {product.product.owner.user.username}
           </Text>
           <QRCode
             value={this.state.data}
