@@ -90,13 +90,13 @@ class ProductDetail extends React.Component {
                     this.setState({ show: false });
                   }}
                 >
-                  <Text style={styles.text}>RENT NOW</Text>
+                  <Text style={styles.text}>BORROW NOW</Text>
                 </Button>
               </Right>
             ) : (
               <Right>
                 <Button style={styles.buttons}>
-                  <Text style={styles.text}>Waiting to Accept.....</Text>
+                  <Text style={styles.text}>Pending...</Text>
                 </Button>
               </Right>
             ),

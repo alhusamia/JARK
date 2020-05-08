@@ -138,6 +138,14 @@ class Profile extends Component {
         ));
     }
 
+    // function removePending(index) {
+    //   var checked = this.myWaiting;
+    //   var values = checked.indexOf(index);
+    //   checked.splice(values, 1);
+    //   this.setState({ myWaiting: checked });
+    //   console.log(this.myWaiting);
+    // }
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -167,7 +175,7 @@ class Profile extends Component {
                     { fontWeight: "200", fontSize: 10, marginLeft: -290 },
                   ]}
                 >
-                  Scan Qr
+                  Scan QR
                 </Text>
                 <View style={styles.profileImage}>
                   <Thumbnail
@@ -212,9 +220,7 @@ class Profile extends Component {
                     >
                       {myWaiting.length}
                     </Text>
-                    <Text style={[styles.text, styles.subText]}>
-                      Waiting to Accept
-                    </Text>
+                    <Text style={[styles.text, styles.subText]}>Pending</Text>
                   </View>
                   <View
                     style={[
@@ -231,9 +237,7 @@ class Profile extends Component {
                     >
                       {myRent.length}
                     </Text>
-                    <Text style={[styles.text, styles.subText]}>
-                      Rented Products
-                    </Text>
+                    <Text style={[styles.text, styles.subText]}>Borrowed</Text>
                   </View>
                 </View>
               </>
@@ -272,7 +276,7 @@ class Profile extends Component {
                 },
               ]}
             >
-              Waiting to Accept
+              Pending
             </Text>
             <ScrollView
               horizontal={true}
@@ -280,6 +284,7 @@ class Profile extends Component {
             >
               {myWaiting}
             </ScrollView>
+            {/* <Button title="Delete" danger onPress={removePending(1)} /> */}
           </View>
           <View style={{ marginTop: 32 }}>
             <Text
@@ -292,7 +297,7 @@ class Profile extends Component {
                 },
               ]}
             >
-              Rented Products
+              Borrowed
             </Text>
             <ScrollView
               horizontal={true}
