@@ -38,7 +38,7 @@ class WaitingDetail extends React.Component {
             </Text>
           </View>
           <Text style={styles.infoDescription}>
-            The Owner is :{product.owner.user.username}
+            Owner:{product.owner.user.username}
           </Text>
           <QRCode
             value={this.state.data}
