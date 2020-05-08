@@ -125,9 +125,9 @@ const styles = StyleSheet.create({
 
     borderRadius: 70,
 
-    width: width,
+    width: width - 30,
 
-    marginHorizontal: 0,
+    marginHorizontal: 15,
 
     backgroundColor: "lightgrey",
 
