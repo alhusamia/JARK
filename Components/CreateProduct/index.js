@@ -46,6 +46,7 @@ class CreateProduct extends Component {
           size={35}
           style={{ marginLeft: 330, marginTop: -45 }}
         />
+
         <Modal
           transparent={true}
           visible={this.state.show}
@@ -133,13 +134,6 @@ class CreateProduct extends Component {
                   <Text style={{ color: "white" }}>ADD</Text>
                   <Icon4 name="add" size={25} style={{ marginRight: 50 }} />
                 </Button>
-                {/* <Button
-                  title="Add"
-                  onPress={() => {
-                    this.props.createProduct(newProduct);
-                    this.setState({ show: false });
-                  }}
-                /> */}
               </View>
             </View>
           </View>

@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-// import Home from "../../Components/AllProducts";
 import Home from "../../Components/Listing";
 import SearchButton from "../../Components/Search/SearchButton";
 import ProductDetail from "../../Components/ProductDetail/ProductDetail";

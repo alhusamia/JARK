@@ -75,8 +75,15 @@ class ProductDetail extends React.Component {
                 name="person"
                 onPress={() => navigation.navigate(OWNERPROFILE, { product })}
                 size={35}
-                style={{ marginTop: -33, marginLeft: 250 }}
+                style={{
+                  marginTop: -33,
+                  marginLeft: 255,
+                  paddingLeft: 10,
+                }}
               />
+              <Right style={{ marginLeft: 235, paddingLeft: 10 }}>
+                <Text>visit profile</Text>
+              </Right>
               <Thumbnail source={{ uri: product.owner.image }} />
             </View>
           )}

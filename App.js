@@ -4,6 +4,7 @@ import { Spinner } from "native-base";
 
 // Navigation
 import RootNavigator from "./Navigation";
+import SlideNavigation from './Navigation/MainNavigator'
 import { NavigationContainer } from "@react-navigation/native";
 
 // Redux
@@ -31,6 +32,7 @@ class App extends Component {
       <Provider store={store}>
         <NavigationContainer>
           <RootNavigator />
+          {/* <SlideNavigation/> */}
         </NavigationContainer>
       </Provider>
     );
