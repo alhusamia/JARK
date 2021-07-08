@@ -29,6 +29,9 @@ class ProductDetail extends React.Component {
       (products) => products.tenant.user.id === product.rented_by
     );
 
+    // the conditions below could be made simpler.
+    // Nothing to concern yourself with now, but just 
+    // leaving these comments for reference.
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
@@ -86,9 +89,10 @@ class ProductDetail extends React.Component {
               </Right>
               <Thumbnail source={{ uri: product.owner.image }} />
             </View>
+            {/* (1) */}
           )}
-          {product.owner.user.id !== user.user_id && [
-            show !== false ? (
+          {product.owner.user.id !== user.user_id /* this condition is unnecessary */ && [
+            show !== false /* Move this condition to (1) */ ? (
               <Right>
                 <Button
                   style={styles.buttons}

@@ -15,6 +15,7 @@ const { Navigator, Screen } = createDrawerNavigator();
 function RootNavigator({ user }) {
   return (
     <Navigator initialRouteName={USER}>
+      {/* this condition isn't necessary */}
       {!user ? (
         <Screen name={USER} component={UserStack} />
       ) : (

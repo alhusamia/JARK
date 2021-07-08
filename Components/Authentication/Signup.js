@@ -20,6 +20,7 @@ class Signup extends Component {
     password: "",
   };
 
+  // a single handleChange() can be used to handle all onChangeText events below
   render() {
     const { navigation, signup } = this.props;
     const { username, password, first_name, last_name, email } = this.state;
@@ -34,7 +35,7 @@ class Signup extends Component {
               <Text key={error}>{error}</Text>
             ))}
           </View>
-        )}       
+        )}
         <TextInput
           style={styles.TextInput}
           placeholder="First Name"
@@ -79,7 +80,7 @@ class Signup extends Component {
           <Text style={styles.authButtonText}>Sign up</Text>
         </TouchableOpacity>
         <Text
-          style={styles.authOther}          
+          style={styles.authOther}
           onPress={() => navigation.replace(LOGIN)}
         >
           Click here to log in!

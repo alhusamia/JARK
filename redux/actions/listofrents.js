@@ -1,6 +1,7 @@
 import { ADD_PRODUCT_TO_LIST_OF_RENT } from "./types";
 import instance from "./instance";
 
+// Rentproduct --> getRentedProducts
 export const Rentproduct = () => async (dispatch) => {
   try {
     const res = await instance.get(`rentlist/`);
